@@ -3,8 +3,7 @@ import Login from '../Views/Login';
 import Register from '../Views/Register';
 import User from '../Views/User';
 import Home from '../Views/Home';
-
-
+import Structure from '../Views/Structure';
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -17,14 +16,19 @@ const AppRoutes = () => {
             element: <Register/>
         },
         {
-            path: '/user',
-            element: <User/>
+            path: '/',
+            element: <Structure/>,
+            children: [
+                {
+                    path: '/',
+                    element: <Home/>
+                },
+                {
+                    path: '/user',
+                    element: <User/>
+                }
+            ]
         },
-        {
-            path: '/home',
-            element: <Home/>
-        },
-
     ])
 
     return routes;
