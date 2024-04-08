@@ -5,6 +5,7 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import axios from 'axios';
 import { Toast } from 'primereact/toast';
+import { useNavigate } from 'react-router-dom';
 
 let Register = () =>{
     type Severity = 'success' | 'info' | 'warn' | 'error';
@@ -14,33 +15,41 @@ let Register = () =>{
     const [password, setContraseña] = useState<string>('');
     const [confirmar, setConfirmar] = useState<string>('');
     const toast = useRef<Toast>(null);
+    const navigate = useNavigate();
 
     const showToast = (severity: Severity, summary: string, detail: string) => {
         toast.current?.show({ severity: severity, summary: summary, detail: detail });
     }
 
-    const register = () => {
-        axios.post('http://localhost:3000/users', {
-            first_name: name,
-            last_name: lastName,
-            email: email,
-            password: password
-        }).then((response) => {
-            showToast('success', 'Usuario creado', 'Por favor confirme su email');
-        }).catch((error) => {
-            showToast('error', 'No se pudo crear el usuario', 'Verifique los mensajes en la pantalla');
-        });
-    }
+    const handleRegister= () => {
+            axios.post('http://localhost:3000/users', {
+                first_name: name,
+                last_name: lastName,
+                email: email,
+                password: password
+            }).then((response) => {
+                showToast('success', 'Usuario creado', 'Por favor confirme su email');
+                navigate('/login');
+            }).catch((error) => {
+                showToast('error', 'No se pudo crear el usuario', 'Verifique los mensajes en la pantalla');
+            });
+        }
+        
+    const handleBack= () => {
+    navigate('/home');
+}
 
 return(
-        <div className="h-screen flex justify-content-center align-content-center align-items-center">
+        <div style={{ backgroundColor: '#EEEEEE'}} className="h-screen flex justify-content-center align-content-center align-items-center">
+            <Toast ref={toast} />
             <Card title="Crear cuenta" className="p-card-title" style={{
                 textAlign: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                backgroundColor: 'white',
                 padding: '20px',
                 borderRadius: '10px',
                 boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)'
             }}>
+                <i className="pi pi-user" style={{ fontSize: '2.5rem' }}></i>
                 <div className="card flex justify-content-center py-4 ">
                     <span className="p-float-label ">
                         <InputText id="name" value={name} onChange={(e) => setName(e.target.value)} style={{ width: '40vh' }}/>
@@ -55,7 +64,8 @@ return(
                 </div>
                 <div className="card flex justify-content-center py-4">
                     <span className="p-float-label">
-                        <InputText id="email" value={email} onChange={(e) => setEmail(e.target.value)} style={{ width: '40vh' }} />
+                        <InputText id="email"
+                        value={email} onChange={(e) => setEmail(e.target.value)} style={{ width: '40vh' }} />
                         <label htmlFor="email">Email</label>
                     </span>
                 </div>
@@ -80,8 +90,8 @@ return(
                         </span>
                 </div>
         <div className="card flex flex-wrap justify-content-center gap-3">
-                <Button label="Volver atrás" severity="info" raised style={{ width: '19vh' }} onClick={() => window.location.href = '/'} />
-                <Button label="Continuar" severity="success" raised style={{ width: '19vh' }} onClick={register} />
+                <Button label="Volver atrás" onClick={handleBack} severity="info" raised style={{ width: '19vh', backgroundColor:'#176B87' }} />
+                <Button label="Continuar" onClick={handleRegister} severity="success" raised style={{ width: '19vh', backgroundColor:'#64CCC5' }} />
         </div>
             </Card>
         </div>

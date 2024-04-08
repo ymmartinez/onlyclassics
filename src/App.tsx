@@ -5,17 +5,20 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import '/node_modules/primeflex/primeflex.css';
-import { Toast } from 'primereact/toast';
-import { useRef } from 'react';
+import { PrimeReactProvider } from 'primereact/api';
 
-const App = () => {
-  const toast = useRef<Toast>(null);
+  const App = () => {
+
+    const value = {
+      ripple: true,
+    };
 
   return (
-    <BrowserRouter>
-    <Toast ref={toast} />
-      <AppRoutes/>
-    </BrowserRouter>
+    <PrimeReactProvider value={value}>
+      <BrowserRouter>
+        <AppRoutes/>
+      </BrowserRouter>
+    </PrimeReactProvider>
   );
 }
 

@@ -1,9 +1,13 @@
-import { useRoutes } from "react-router-dom";
+import { Outlet, useRoutes } from "react-router-dom";
 import Login from '../Views/Login';
 import Register from '../Views/Register';
 import User from '../Views/User';
 import Home from '../Views/Home';
 import Structure from '../Views/Structure';
+import Activity from '../Views/Activity';
+import Articles from '../Views/Articles';
+import Details from '../Views/Details';
+import Search from '../Views/Search';
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -15,18 +19,40 @@ const AppRoutes = () => {
             path: '/register',
             element: <Register/>
         },
+
         {
             path: '/',
-            element: <Structure/>,
+            element: (
+                <>
+                    <Structure />
+                    <Outlet/>
+                </>
+            ),
             children: [
                 {
-                    path: '/',
+                    path: 'home',
                     element: <Home/>
                 },
                 {
-                    path: '/user',
+                    path: 'activity',
+                    element: <Activity/>
+                },
+                {
+                    path: 'articles',
+                    element: <Articles/>
+                },
+                {
+                    path: 'user',
                     element: <User/>
-                }
+                },
+                {
+                    path: 'details',
+                    element: <Details/>
+                },
+                {
+                    path: 'search',
+                    element: <Search/>
+                },
             ]
         },
     ])

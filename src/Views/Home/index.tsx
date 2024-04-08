@@ -1,43 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menubar } from 'primereact/menubar';
-import { InputText } from 'primereact/inputtext';
-import { Badge } from 'primereact/badge';
-import { Avatar } from 'primereact/avatar';  
-import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { Carousel, CarouselResponsiveOption } from 'primereact/carousel';
 import { Tag } from 'primereact/tag';
-
+import { Card } from 'primereact/card';
+import { Ripple } from 'primereact/ripple';
 
 let Home = () => {
-    
-    const itemRenderer = (item: any) => (
-        <a className="flex align-items-center p-menuitem-link">
-            <span className={item.icon} />
-            <span className="mx-2">{item.label}</span>
-            {item.badge && <Badge className="ml-auto" value={item.badge} />}
-            {item.shortcut && <span className="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{item.shortcut}</span>}
-        </a>
-    );
-    const items = [
-        {
-            label: 'Home',
-            icon: 'pi pi-home'
-        },
-        {
-            label: 'User',
-            icon: 'pi pi-star'
-        },
-    ]
-
-
-    const start = <img alt="logo" src="https://primefaces.org/cdn/primereact/images/logo.png" height="40" className="mr-2"></img>;
-    const end = (
-        <div className="flex align-items-center gap-2 ">
-            <i className="pi pi-search"></i>
-            <InputText placeholder="Search" height="60" type="text" className="w-30rem sm:w-auto p-inputtext-lg" />
-        </div>
-    );
     interface Product {
         id: string;
         code: string;
@@ -127,19 +95,31 @@ let Home = () => {
     };
 
     return (
-        <div className="card">
-            <Menubar model={items} start={start} end={end} />
-                <div>
-                    <img src="background.jpeg" alt="image" width="10000" height="240" />
-                </div>
-                <Carousel value={products} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} className="custom-carousel" circular
+        <div style={{ backgroundColor: '#EEEEEE'}} className='p-5'>
+            <Card className="px-5 border-round-2xl h-10rem" style={{
+                backgroundImage: 'url(background.jpeg)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+                }}>
+            </Card>
+
+            <Carousel value={products} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} className="custom-carousel" circular
             autoplayInterval={3000} itemTemplate={productTemplate} />
+
+            <Card title="Categorias" className="p-card-title px-5 border-round-2xl align-items-start" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
+                <div style={{ display: 'flex' }} className='p-0'>
+                    <div className="text-white flex select-none justify-content-start align-items-start shadow-2 border-round-2xl p-6 w-10 font-bold p-ripple" style={{ backgroundColor: '#176B87'}}>
+                        Autos clasicos
+                        <Ripple />
+                    </div>
+                    <div className="text-white flex select-none justify-content-start align-items-start shadow-2 border-round-2xl p-6 w-10 font-bold p-ripple" style={{ backgroundColor: '#176B87'}}>
+                        Antiguedades
+                        <Ripple />
+                    </div>
+                </div>
+            </Card>
         </div>
-        
     )
 }
-    
-
-
 
 export default Home;
