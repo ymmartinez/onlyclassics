@@ -63,7 +63,7 @@ const Login = () => {
 
                     <div className="p-inputgroup flex-1">
                         <span className="p-inputgroup-addon" >
-                            <i className="pi pi-key"></i>
+                            <i className="pi pi-lock"></i>
                         </span>
                         <span className="p-float-label">
                             <Password

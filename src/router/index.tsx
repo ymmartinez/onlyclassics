@@ -7,7 +7,9 @@ import Structure from '../Views/Structure';
 import Activity from '../Views/Activity';
 import Articles from '../Views/Articles';
 import Details from '../Views/Details';
-import Search from '../Views/Search';
+import Search from '../Views/Search'; 
+import EditPassword from "../Views/EditPassword";
+import Setting from "../Views/Setting";
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -52,6 +54,14 @@ const AppRoutes = () => {
                 {
                     path: 'search',
                     element: <Search/>
+                },
+                {
+                    path: 'EditPassword',
+                    element: <EditPassword/>
+                },
+                {
+                    path: 'setting',
+                    element: <Setting/>
                 },
             ]
         },
