@@ -37,7 +37,6 @@ const Structure = () => {
             <span className="p-toolbar-separator hidden md:inline-flex"></span>
             <span className="p-toolbar-separator hidden md:inline-flex"></span>
         </React.Fragment>
-        
     );
 
     const centerContent = (
@@ -49,7 +48,7 @@ const Structure = () => {
     const navigate = useNavigate();
 
     const handleUser = () => {
-        navigate('/user');       
+        navigate('/user');
 }
     const endContent = (
         <React.Fragment>

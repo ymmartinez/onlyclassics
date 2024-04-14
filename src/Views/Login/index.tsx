@@ -26,15 +26,14 @@ const Login = () => {
             email: username,
             password: password
         }).then((response) => { // then para cuando se termina de resolver algo (promesas)
-            console.log(response);
+            localStorage.setItem('access_token', response.data.access_token);
             navigate('/home');
         }).catch((error) => { //catch para cuando falla
             showToast('error', 'No se pudo iniciar sesion', 'Verifique los mensajes en la pantalla');
         });
     }
     const handleRegister = () => {
-            navigate('/register');
-            
+        navigate('/register');
     }
 
     return (
@@ -80,7 +79,6 @@ const Login = () => {
                 </div>
             </Card>
         </div>
-
     )
 }
 export default Login;
