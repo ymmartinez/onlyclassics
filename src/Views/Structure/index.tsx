@@ -37,7 +37,6 @@ const Structure = () => {
             <span className="p-toolbar-separator hidden md:inline-flex"></span>
             <span className="p-toolbar-separator hidden md:inline-flex"></span>
         </React.Fragment>
-        
     );
 
     const centerContent = (
@@ -49,7 +48,7 @@ const Structure = () => {
     const navigate = useNavigate();
 
     const handleUser = () => {
-        navigate('/user');       
+        navigate('/user');
 }
     const endContent = (
         <React.Fragment>
@@ -70,7 +69,7 @@ const Structure = () => {
     );
     return (
         <div style={{ backgroundColor: '#EEEEEE'}} className='px-5'>
-            <Toolbar start={startContent} center={centerContent} end={endContent} className=" shadow-2 border-round-2xl" style={{backgroundColor: '#053B50'}} />
+            <Toolbar start={startContent} center={centerContent} end={endContent} className="border-round-2xl py-0" style={{backgroundColor: '#053B50'}} />
         </div>
     );
 }

@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { Carousel, CarouselResponsiveOption } from 'primereact/carousel';
-import { Tag } from 'primereact/tag';
 import { Card } from 'primereact/card';
 import { Ripple } from 'primereact/ripple';
+import axios from 'axios';
+import './index.css';
+import { Image } from 'primereact/image';
 
 let Home = () => {
     interface Product {
-        id: string;
-        code: string;
-        name: string;
-        description: string;
-        image: string;
+        id: number;
+        title: string;
         price: number;
-        category: string;
-        quantity: number;
-        inventoryStatus: string;
-        rating: number;
+        image: string;
+        currency: string;
     }
 
     const [products, setProducts] = useState<Product[]>([]);
     const responsiveOptions: CarouselResponsiveOption[] = [
         {
             breakpoint: '1400px',
-            numVisible: 2,
+            numVisible: 3,
             numScroll: 1
         },
         {
@@ -43,82 +40,70 @@ let Home = () => {
         }
     ];
 
-    const getSeverity = (product: Product) => {
-        switch (product.inventoryStatus) {
-            case 'INSTOCK':
-                return 'success';
-
-            case 'LOWSTOCK':
-                return 'warning';
-
-            case 'OUTOFSTOCK':
-                return 'danger';
-
-            default:
-                return null;
-        }
-    };
+    const getArticles = () => {
+        axios.get('http://localhost:3000/articles')
+            .then((response) => {
+                console.log(response.data);
+                setProducts(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
     useEffect(() => {
-        setProducts([{
-            id: 'id',
-            code: 'code',
-            name: 'zapas',
-            description: 'description',
-            image: 'image',
-            price: 4,
-            category: 'category',
-            quantity: 4,
-            inventoryStatus: 'inventoryStatus',
-            rating: 4,
-        }])
-        
+        getArticles();
     }, []);
+
+    const header = (
+        <Image alt="Card" imageClassName="border-round-xl" src={`http://localhost:3000/articles/file`}/>
+    );
 
     const productTemplate = (product: Product) => {
         return (
-            <div className="border-1 surface-border border-round m-2 text-center py-5 px-3">
-                <div className="mb-3">
-                    <img src={`https://primefaces.org/cdn/primereact/images/product/${product.image}`} alt={product.name} className="w-6 shadow-2" />
-                </div>
-                <div>
-                    <h4 className="mb-1">{product.name}</h4>
-                    <h6 className="mt-0 mb-3">${product.price}</h6>
-                    <Tag value={product.inventoryStatus} severity={getSeverity(product)}></Tag>
-                    <div className="mt-5 flex flex-wrap gap-2 justify-content-center">
-                        <Button icon="pi pi-search" className="p-button p-button-rounded" />
-                        <Button icon="pi pi-star-fill" className="p-button-success p-button-rounded" />
-                    </div>
-                </div>
+            <div className='p-2'>
+                <Card title={product.title} subTitle={product.currency + ' ' + product.price} header={header}
+                    className="p-card-title border-round-xl p-2">
+                </Card>
             </div>
         );
     };
 
     return (
-        <div style={{ backgroundColor: '#EEEEEE'}} className='p-5'>
-            <Card className="px-5 border-round-2xl h-10rem" style={{
+        <>
+            <Card className="px-5 border-round-xl h-10rem" style={{
                 backgroundImage: 'url(background.jpeg)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
                 }}>
             </Card>
 
-            <Carousel value={products} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-            autoplayInterval={3000} itemTemplate={productTemplate} />
+            <Carousel value={products} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} className="custom-carousel pt-4" circular
+            autoplayInterval={3000} itemTemplate={productTemplate}/>
 
-            <Card title="Categorias" className="p-card-title px-5 border-round-2xl align-items-start" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
-                <div style={{ display: 'flex' }} className='p-0'>
-                    <div className="text-white flex select-none justify-content-start align-items-start shadow-2 border-round-2xl p-6 w-10 font-bold p-ripple" style={{ backgroundColor: '#176B87'}}>
-                        Autos clasicos
-                        <Ripple />
+            <Card title="Categorias" className="p-card-title border-round-xl" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
+                <div className='grid'>
+                    <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
+                        <div className='text-white p-ripple border-round-xl' style={{backgroundColor: '#176B87'}}>
+                            <h3 className='pl-2 pt-2 m-0'>Autos Clasicos</h3>
+                            <div className='flex justify-content-end pr-2 pb-2'>
+                                <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
+                            </div>
+                            <Ripple />
+                        </div>
                     </div>
-                    <div className="text-white flex select-none justify-content-start align-items-start shadow-2 border-round-2xl p-6 w-10 font-bold p-ripple" style={{ backgroundColor: '#176B87'}}>
-                        Antiguedades
-                        <Ripple />
+                    <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
+                        <div className='text-white p-ripple border-round-xl' style={{backgroundColor: '#176B87'}}>
+                            <h3 className='pl-2 pt-2 m-0'>Antiguedades</h3>
+                            <div className='flex justify-content-end pr-2 pb-2'>
+                                <Image imageClassName="border-round-xl h-5rem" src='antiques.png'/>
+                            </div>
+                            <Ripple />
+                        </div>
                     </div>
                 </div>
             </Card>
-        </div>
+        </>
     )
 }
 

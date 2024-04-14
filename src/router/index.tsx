@@ -27,12 +27,14 @@ const AppRoutes = () => {
             element: (
                 <>
                     <Structure />
-                    <Outlet/>
+                    <div style={{ backgroundColor: '#EEEEEE'}} className='p-5'>
+                        <Outlet/>
+                    </div>
                 </>
             ),
             children: [
                 {
-                    path: 'home',
+                    path: '',
                     element: <Home/>
                 },
                 {
