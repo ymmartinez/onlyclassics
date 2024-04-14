@@ -74,9 +74,9 @@ const Login = () => {
                             <label htmlFor="password">Password</label>
                         </span>
                     </div>
-                    <Button type="button" label="Log in" onClick={handleLogin} style={{backgroundColor:'#176B87'}}/>
+                    <Button type="button" label="Log in" onClick={handleLogin} style={{backgroundColor:'#176B87'}} className='border-round-xl'/>
                     <p style={{textDecoration: 'underline'}}>Forgot your ID and password</p>
-                    <Button type="button" label="Register" onClick={handleRegister} icon="pi pi-users" style={{backgroundColor:'#64CCC5'}} />
+                    <Button type="button" label="Register" onClick={handleRegister} icon="pi pi-users" style={{backgroundColor:'#64CCC5'}}className='border-round-xl'/>
                 </div>
             </Card>
         </div>

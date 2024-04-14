@@ -1,6 +1,7 @@
 import React from "react";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { Card } from 'primereact/card';
 
 const Activity = () => {
     let activitiesData : any[] = [];
@@ -23,14 +24,14 @@ const Activity = () => {
 
     return (
         <div style={{ backgroundColor: '#EEEEEE'}}>
-            <div>
+            <Card>
                 <DataTable value={activitiesData} scrollable scrollHeight="480px">
                     <Column field="activity" header="Actividad" />
                     <Column field="date" header="Fecha" />
                     <Column field="hour" header="Hora" />
                     <Column field="description" header="Descripción" />
                 </DataTable>
-            </div>
+            </Card>
         </div>
     )
 }

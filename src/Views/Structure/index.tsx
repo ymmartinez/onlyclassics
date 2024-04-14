@@ -43,7 +43,7 @@ const Structure = () => {
     const centerContent = (
         <span className="p-input-icon-right">
             <i className="pi pi-search" />
-            <InputText placeholder="Search" className='border-round-2xl'></InputText>
+            <InputText placeholder="Search" className='border-round-xl'></InputText>
         </span>
     );
     const navigate = useNavigate();
@@ -55,22 +55,22 @@ const Structure = () => {
         <React.Fragment>
             <div>
             <Button tooltip="Publicar articulo" tooltipOptions={{ position: 'bottom' }} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
-                <i className="pi pi-plus-circle text-2xl"></i>
+                <i className="pi pi-plus-circle text-xl"></i>
             </Button>
             <Button className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
-                <i className="pi pi-bell p-overlay-badge text-2xl" style={{ fontSize: '2rem' }}>
+                <i className="pi pi-bell p-overlay-badge text-xl" style={{ fontSize: '2rem' }}>
                     <Badge value="2"></Badge>
                 </i>
             </Button>
             <Button onClick={handleUser} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
-                <i className="pi pi-user text-2xl"></i>
+                <i className="pi pi-user text-xl"></i>
             </Button>
             </div>
         </React.Fragment>
     );
     return (
         <div style={{ backgroundColor: '#EEEEEE'}} className='px-5'>
-            <Toolbar start={startContent} center={centerContent} end={endContent} className=" shadow-2 border-round-2xl" style={{backgroundColor: '#053B50'}} />
+            <Toolbar start={startContent} center={centerContent} end={endContent} className="border-round-xl" style={{backgroundColor: '#053B50'}}/>
         </div>
     );
 }

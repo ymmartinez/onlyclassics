@@ -35,19 +35,20 @@ let Register = () => {
         });
     }
 
-    const handleBack = () => {
-        navigate('/home');
-    }
         const header = (
-        <i className="pi pi-user" style={{ fontSize: '2.5rem' }}></i>
-    );
+            <>
+                <div className='text-left'>
+                    <Button onClick={() =>navigate('/user')} icon="pi pi-arrow-left" className="p-button-text " />
+                </div>
+                <div>
+                    <i className="pi pi-user" style={{ fontSize: '2.5rem' }}></i>
+                </div>
+            </>
+        );
     const footer = (
-        <>
-        <div className="card flex flex-wrap justify-content-center gap-3">
-        <Button label="Volver atrás" onClick={handleBack} severity="info" raised style={{ width: '19vh', backgroundColor: '#176B87' }} />
-        <Button label="Continuar" onClick={handleRegister} severity="success" raised style={{ width: '19vh', backgroundColor: '#64CCC5' }} />
+        <div className="card flex flex-wrap justify-content-end">
+            <Button label="Continuar" onClick={handleRegister} severity="success" raised style={{ width: '19vh', backgroundColor: '#64CCC5' }} />
         </div>
-        </>
     );
 
     return (
@@ -56,30 +57,30 @@ let Register = () => {
             <Card footer={footer} header={header} title="Crear cuenta" className="p-card-title" style={{
                 textAlign: 'center',
                 backgroundColor: 'white',
-                padding: '20px',
+                padding: '10px',
                 borderRadius: '10px',
                 boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)'
             }}>
-                <div className="card flex justify-content-center py-4 ">
+                <div className="card flex justify-content-center mt-4 ">
                     <span className="p-float-label ">
                         <InputText id="name" value={name} onChange={(e) => setName(e.target.value)} style={{ width: '40vh' }} />
                         <label htmlFor="name">Nombre completo</label>
                     </span>
                 </div>
-                <div className="card flex justify-content-center ">
+                <div className="card flex justify-content-center mt-4">
                     <span className="p-float-label">
                         <InputText id="lastName" value={lastName} onChange={(e) => setApellido(e.target.value)} style={{ width: '40vh' }} />
                         <label htmlFor="name">Apellido</label>
                     </span>
                 </div>
-                <div className="card flex justify-content-center py-4">
+                <div className="card flex justify-content-center mt-4">
                     <span className="p-float-label">
                         <InputText id="email"
                             value={email} onChange={(e) => setEmail(e.target.value)} style={{ width: '40vh' }} />
                         <label htmlFor="email">Email</label>
                     </span>
                 </div>
-                <div className="p-inputgroup flex-1 ">
+                <div className="p-inputgroup flex-1 mt-4">
                     <span className="p-float-label">
                         <Password
                             inputId="password"
@@ -89,7 +90,7 @@ let Register = () => {
                         <label htmlFor="password">Contraseña</label>
                     </span>
                 </div>
-                <div className="p-inputgroup flex-1 py-4">
+                <div className="p-inputgroup flex-1 mt-4">
                     <span className="p-float-label">
                         <Password
                             inputId="confirmar"

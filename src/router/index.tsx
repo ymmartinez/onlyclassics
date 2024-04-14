@@ -6,10 +6,12 @@ import Home from '../Views/Home';
 import Structure from '../Views/Structure';
 import Activity from '../Views/Activity';
 import Articles from '../Views/Articles';
-import Details from '../Views/Details';
+import Data from '../Views/Data';
 import Search from '../Views/Search'; 
 import EditPassword from "../Views/EditPassword";
 import Setting from "../Views/Setting";
+import EditMail from "../Views/EditMail";
+import Help from "../Views/Help";
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -48,20 +50,28 @@ const AppRoutes = () => {
                     element: <User/>
                 },
                 {
-                    path: 'details',
-                    element: <Details/>
+                    path: 'data',
+                    element: <Data/>
                 },
                 {
                     path: 'search',
                     element: <Search/>
                 },
                 {
-                    path: 'EditPassword',
+                    path: 'editpassword',
                     element: <EditPassword/>
                 },
                 {
                     path: 'setting',
                     element: <Setting/>
+                },
+                {
+                    path: 'editmail',
+                    element: <EditMail/>
+                },
+                {
+                    path: 'help',
+                    element: <Help/>
                 },
             ]
         },
