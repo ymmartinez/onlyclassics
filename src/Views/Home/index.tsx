@@ -70,7 +70,7 @@ let Home = () => {
     };
 
     return (
-        <>
+        <div className='pt-4'>
             <Card className="px-5 border-round-xl h-10rem" style={{
                 backgroundImage: 'url(background.jpeg)',
                 backgroundSize: 'cover',
@@ -84,7 +84,7 @@ let Home = () => {
             <Card title="Categorias" className="p-card-title border-round-xl" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
                 <div className='grid'>
                     <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-                        <div className='text-white p-ripple border-round-xl' style={{backgroundColor: '#176B87'}}>
+                        <div className='text-white p-ripple border-round-xl' style={{backgroundColor: '#638889'}}>
                             <h3 className='pl-2 pt-2 m-0'>Autos Clasicos</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
                                 <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
@@ -93,7 +93,7 @@ let Home = () => {
                         </div>
                     </div>
                     <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-                        <div className='text-white p-ripple border-round-xl' style={{backgroundColor: '#176B87'}}>
+                        <div className='text-white p-ripple border-round-xl' style={{backgroundColor: '#638889'}}>
                             <h3 className='pl-2 pt-2 m-0'>Antiguedades</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
                                 <Image imageClassName="border-round-xl h-5rem" src='antiques.png'/>
@@ -103,7 +103,7 @@ let Home = () => {
                     </div>
                 </div>
             </Card>
-        </>
+        </div>
     )
 }
 

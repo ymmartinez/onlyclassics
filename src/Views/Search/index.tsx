@@ -67,7 +67,6 @@ const Search = () => {
     return (
         <div className="card">
             <DataView value={products}
-            // listTemplate={listTemplate}
             paginator rows={5} />
         </div>
     )

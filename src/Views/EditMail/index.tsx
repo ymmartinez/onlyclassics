@@ -3,11 +3,9 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { Password } from 'primereact/password';
 import { useNavigate } from 'react-router-dom';
+import { InputText } from "primereact/inputtext";
 
-const EditPassword = () => {
-    const [currentPassword, setCurrentPassword] = useState('');
-    const [newPassword, setNewPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+const EditMail= () => {
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const navigate = useNavigate()
 
@@ -21,7 +19,7 @@ const EditPassword = () => {
                 <Button onClick={() =>navigate('/user')} icon="pi pi-arrow-left" className="p-button-text " />
             </div>
             <div>
-                <i className="pi pi-lock" style={{ fontSize: '2.5rem' }}></i>
+                <i className="pi pi-at" style={{ fontSize: '2.5rem' }}></i>
             </div>
         </>
     );
@@ -34,7 +32,7 @@ const EditPassword = () => {
     );
     return (
     <div className="h-full flex justify-content-center align-content-center align-items-center">
-        <Card footer={footer} header={header} title='Cambio de contraseña' style={{
+        <Card footer={footer} header={header} title='Cambio de Mail'style={{
             width:'500px',
             textAlign: 'center',
             backgroundColor: 'white',
@@ -44,21 +42,14 @@ const EditPassword = () => {
             
                 <div className="p-fluid mt-4">
                     <span className="p-float-label">
-                        <Password id="currentPassword" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} toggleMask feedback={false} />
-                        <label htmlFor="currentPassword">Contraseña actual</label>
+                        <InputText id="currentMail"/>
+                        <label htmlFor="currentMail">Mail</label>
                     </span>
                 </div>
                 <div className="p-fluid mt-4">
                     <span className="p-float-label">
-                        <Password id="newPassword" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} toggleMask feedback={false} />
-                        <label htmlFor="newPassword">Nueva contraseña</label>
-                    </span>
-                </div>
-                <div className="p-fluid mt-4">
-                    <span className="p-float-label">
-                        <Password id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} toggleMask feedback={false}
-                        inputId="password"/>
-                        <label htmlFor="confirmPassword">Confirmar nueva contraseña</label>
+                        <InputText id="newMail" />
+                        <label htmlFor="newMail">Nuevo Mail</label>
                     </span>
                 </div>
         </Card>
@@ -66,4 +57,4 @@ const EditPassword = () => {
     );
 };
 
-export default EditPassword;
+export default EditMail;

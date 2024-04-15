@@ -6,10 +6,13 @@ import Home from '../Views/Home';
 import Structure from '../Views/Structure';
 import Activity from '../Views/Activity';
 import Articles from '../Views/Articles';
-import Details from '../Views/Details';
+import Data from '../Views/Data';
 import Search from '../Views/Search'; 
 import EditPassword from "../Views/EditPassword";
 import Setting from "../Views/Setting";
+import EditMail from "../Views/EditMail";
+import Help from "../Views/Help";
+import FrequentQuestions from "../Views/FrequentQuestions";
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -26,9 +29,11 @@ const AppRoutes = () => {
             path: '/',
             element: (
                 <>
-                    <Structure />
-                    <div style={{ backgroundColor: '#EEEEEE'}} className='p-5'>
-                        <Outlet/>
+                    <div style={{ backgroundColor: '#EEEEEE'}} className='px-4 h-full'>
+                        <Structure />
+                        <div style={{ height: "calc(100vh - 4rem)"}}>
+                            <Outlet/>
+                        </div>
                     </div>
                 </>
             ),
@@ -50,20 +55,32 @@ const AppRoutes = () => {
                     element: <User/>
                 },
                 {
-                    path: 'details',
-                    element: <Details/>
+                    path: 'data',
+                    element: <Data/>
                 },
                 {
                     path: 'search',
                     element: <Search/>
                 },
                 {
-                    path: 'EditPassword',
+                    path: 'editpassword',
                     element: <EditPassword/>
                 },
                 {
                     path: 'setting',
                     element: <Setting/>
+                },
+                {
+                    path: 'editmail',
+                    element: <EditMail/>
+                },
+                {
+                    path: 'help',
+                    element: <Help/>
+                },
+                {
+                    path: 'frecuentquestions',
+                    element: <FrequentQuestions/>
                 },
             ]
         },
