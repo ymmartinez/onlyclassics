@@ -52,7 +52,7 @@ let Register = () => {
     );
 
     return (
-        <div style={{ backgroundColor: '#EEEEEE' }} className="h-screen flex justify-content-center align-content-center align-items-center">
+        <div className="h-full flex justify-content-center align-content-center align-items-center">
             <Toast ref={toast} />
             <Card footer={footer} header={header} title="Crear cuenta" className="p-card-title" style={{
                 textAlign: 'center',

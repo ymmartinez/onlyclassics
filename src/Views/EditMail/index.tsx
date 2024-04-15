@@ -31,8 +31,8 @@ const EditMail= () => {
         </>
     );
     return (
-    <div style={{ backgroundColor: '#EEEEEE'}} className="h-screen flex justify-content-center align-content-center align-items-center">
-        <Card footer={footer} header={header} title='Cambio de Mail' className="p-card-title" style={{
+    <div className="h-full flex justify-content-center align-content-center align-items-center">
+        <Card footer={footer} header={header} title='Cambio de Mail'style={{
             width:'500px',
             textAlign: 'center',
             backgroundColor: 'white',

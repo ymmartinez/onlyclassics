@@ -40,7 +40,7 @@ const Data = () => {
         </>
     );
     return (
-        <div style={{ backgroundColor: '#EEEEEE'}} className="h-screen flex justify-content-center align-content-center align-items-center">
+        <div className="h-full flex justify-content-center align-content-center align-items-center">
             <Card header={header} className="p-card-title" style={{
                     width:'500px',
                     textAlign: 'center',

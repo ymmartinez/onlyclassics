@@ -10,7 +10,7 @@ const handleFAQ = () => {
 };
 
 return (
-    <div className="p-d-flex p-jc-center">
+    <div className="h-full p-d-flex p-jc-center">
         <Card title="Ayuda" className="p-mt-4" style={{ width: '400px' }}>
             <div className="p-fluid">
                 <div className="p-field">

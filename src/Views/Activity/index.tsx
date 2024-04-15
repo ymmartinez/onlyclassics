@@ -23,7 +23,7 @@ const Activity = () => {
     getActivities();
 
     return (
-        <div style={{ backgroundColor: '#EEEEEE'}}>
+        <div className="h-full">
             <Card>
                 <DataTable value={activitiesData} scrollable scrollHeight="480px">
                     <Column field="activity" header="Actividad" />

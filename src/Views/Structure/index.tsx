@@ -68,9 +68,7 @@ const Structure = () => {
         </React.Fragment>
     );
     return (
-        <div style={{ backgroundColor: '#EEEEEE'}} className='px-5'>
-            <Toolbar start={startContent} center={centerContent} end={endContent} className="border-round-xl" style={{backgroundColor: '#053B50'}}/>
-        </div>
+        <Toolbar start={startContent} center={centerContent} end={endContent} className="border-round-xl py-0 h-4rem" style={{backgroundColor: '#053B50'}}/>
     );
 }
 

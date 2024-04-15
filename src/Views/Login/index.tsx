@@ -37,7 +37,7 @@ const Login = () => {
     }
 
     return (
-        <div className="h-screen flex justify-content-center align-content-center align-items-center"
+        <div className=" h-screen flex justify-content-center align-content-center align-items-center"
             style={{
                 backgroundImage: "url('background.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'
             }}>

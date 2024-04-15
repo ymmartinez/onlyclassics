@@ -30,15 +30,15 @@ let User = () => {
     const footer = (
         <>
             <div className="card flex flex-column md:flex-col gap-3">
-                <Button label="Datos Personales" onClick={() => navigateRoute('/data')} icon="pi pi-id-card" className='border-round-xl'style={{ backgroundColor:'#7FC7D9'}}/>
-                <Button label="Configuracion" onClick={() => navigateRoute('/setting')} icon="pi pi-cog" className='border-round-xl'style={{backgroundColor:'#7FC7D9'}}/>
-                <Button label="Ayuda"   onClick={() => navigateRoute('/')} icon="pi pi-info-circle" className='border-round-xl'style={{backgroundColor:'#7FC7D9'}}/>
-                <Button label="Cerrar Sesion"  onClick={() => navigateRoute('/data')} icon="pi pi-sign-out" className='border-round-xl'style={{backgroundColor:'#7FC7D9'}}/>
+                <Button label="Datos Personales" onClick={() => navigateRoute('/data')} icon="pi pi-id-card" className='border-round-xl'style={{ backgroundColor:'#638889'}}/>
+                <Button label="Configuracion" onClick={() => navigateRoute('/setting')} icon="pi pi-cog" className='border-round-xl'style={{backgroundColor:'#638889'}}/>
+                <Button label="Ayuda"   onClick={() => navigateRoute('/')} icon="pi pi-info-circle" className='border-round-xl'style={{backgroundColor:'#638889'}}/>
+                <Button label="Cerrar Sesion"  onClick={() => navigateRoute('/')} icon="pi pi-sign-out" className='border-round-xl'style={{backgroundColor:'#638889'}}/>
             </div>
         </>
     );
     return(
-        <div style={{ backgroundColor: '#EEEEEE'}} className="h-screen flex justify-content-center align-content-center align-items-center">
+        <div className="flex justify-content-center align-content-center align-items-center h-full">
             <Card footer={footer} header={header} title="Nombre" className="p-card-title"
                 style={{
                 width:'500px',

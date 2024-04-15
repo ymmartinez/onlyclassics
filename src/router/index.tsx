@@ -12,6 +12,7 @@ import EditPassword from "../Views/EditPassword";
 import Setting from "../Views/Setting";
 import EditMail from "../Views/EditMail";
 import Help from "../Views/Help";
+import FrequentQuestions from "../Views/FrequentQuestions";
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -28,9 +29,11 @@ const AppRoutes = () => {
             path: '/',
             element: (
                 <>
-                    <Structure />
-                    <div style={{ backgroundColor: '#EEEEEE'}} className='p-5'>
-                        <Outlet/>
+                    <div style={{ backgroundColor: '#EEEEEE'}} className='px-4 h-full'>
+                        <Structure />
+                        <div style={{ height: "calc(100vh - 4rem)"}}>
+                            <Outlet/>
+                        </div>
                     </div>
                 </>
             ),
@@ -74,6 +77,10 @@ const AppRoutes = () => {
                 {
                     path: 'help',
                     element: <Help/>
+                },
+                {
+                    path: 'frecuentquestions',
+                    element: <FrequentQuestions/>
                 },
             ]
         },
