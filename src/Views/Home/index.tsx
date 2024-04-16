@@ -70,7 +70,7 @@ let Home = () => {
     };
 
     return (
-        <div className='pt-4'>
+        <div className='py-4 min-h-full'>
             <Card className="px-5 border-round-xl h-10rem" style={{
                 backgroundImage: 'url(background.jpeg)',
                 backgroundSize: 'cover',

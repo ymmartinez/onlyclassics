@@ -41,10 +41,9 @@ const EditPassword = () => {
             padding: '10px',
             borderRadius: '10px',
         }}>
-            
                 <div className="p-fluid mt-4">
                     <span className="p-float-label">
-                        <Password id="currentPassword" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} toggleMask feedback={false} />
+                        <Password id="currentPassword" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)}  feedback={false} toggleMask/>
                         <label htmlFor="currentPassword">Contraseña actual</label>
                     </span>
                 </div>

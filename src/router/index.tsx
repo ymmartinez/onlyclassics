@@ -7,7 +7,7 @@ import Structure from '../Views/Structure';
 import Activity from '../Views/Activity';
 import Articles from '../Views/Articles';
 import Data from '../Views/Data';
-import Search from '../Views/Search'; 
+import Search from '../Views/Search';
 import EditPassword from "../Views/EditPassword";
 import Setting from "../Views/Setting";
 import EditMail from "../Views/EditMail";

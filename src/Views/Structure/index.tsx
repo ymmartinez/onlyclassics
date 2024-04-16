@@ -5,11 +5,15 @@ import { Button } from 'primereact/button';
 import { Badge } from 'primereact/badge';
 import { useNavigate } from 'react-router-dom';
 
-
 const Structure = () => {
+    const navigate = useNavigate();
+
     const startContent = (
         <React.Fragment>
-            <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"
+                onClick={() =>navigate('/')}
+                className='cursor-pointer'
+            >
                 <g mask="url(#mask0_2642_713)">
                     <path
                         fillRule="evenodd"
@@ -29,7 +33,7 @@ const Structure = () => {
                 <path d="M21.1245 10.1789L24.8545 9.794L22.4862 7.09967H19.7628L21.1245 10.1789Z" fill="var(--primary-color)" />
                 <path d="M12.1762 10.1789L8.4462 9.794L10.8145 7.09967H13.5378L12.1762 10.1789Z" fill="var(--primary-color)" />
             </svg>
-            <span className="p-toolbar-separator hidden md:inline-flex"></span> 
+            <span className="p-toolbar-separator hidden md:inline-flex"></span>
             <span className="p-toolbar-separator hidden md:inline-flex"></span>
             <span className="p-toolbar-separator hidden md:inline-flex"></span>
             <span className="p-toolbar-separator hidden md:inline-flex"></span>
@@ -45,7 +49,6 @@ const Structure = () => {
             <InputText placeholder="Search" className='border-round-xl'></InputText>
         </span>
     );
-    const navigate = useNavigate();
 
     const handleUser = () => {
         navigate('/user');
