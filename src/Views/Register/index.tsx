@@ -38,7 +38,7 @@ let Register = () => {
         const header = (
             <>
                 <div className='text-left'>
-                    <Button onClick={() =>navigate('/user')} icon="pi pi-arrow-left" className="p-button-text " />
+                    <Button onClick={() =>navigate('/')} icon="pi pi-arrow-left" className="p-button-text " />
                 </div>
                 <div>
                     <i className="pi pi-user" style={{ fontSize: '2.5rem' }}></i>
@@ -47,7 +47,7 @@ let Register = () => {
         );
     const footer = (
         <div className="card flex flex-wrap justify-content-end">
-            <Button label="Continuar" onClick={handleRegister} severity="success" raised style={{ width: '19vh', backgroundColor: '#64CCC5' }} />
+            <Button label="Continuar" onClick={handleRegister} severity="success" raised style={{ width: '19vh', backgroundColor: '#176B87' }} />
         </div>
     );
 

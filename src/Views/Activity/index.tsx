@@ -2,9 +2,12 @@ import React from "react";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Card } from 'primereact/card';
+import { Button } from 'primereact/button'
+import { useNavigate } from 'react-router-dom';
 
 const Activity = () => {
     let activitiesData : any[] = [];
+    const navigate = useNavigate();
 
     const getActivities = () => {
         activitiesData = [
@@ -22,9 +25,16 @@ const Activity = () => {
 
     getActivities();
 
+    const header = (
+        <>
+            <div className='text-left'>
+                <Button onClick={() =>navigate('/setting')} icon="pi pi-arrow-left" className="p-button-text " />
+            </div>
+        </>
+    );
     return (
-        <div className="h-full">
-            <Card>
+        <div className="justify-content-center align-content-center align-items-center h-full">
+            <Card header={header} >
                 <DataTable value={activitiesData} scrollable scrollHeight="480px">
                     <Column field="activity" header="Actividad" />
                     <Column field="date" header="Fecha" />

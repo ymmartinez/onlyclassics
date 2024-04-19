@@ -53,8 +53,7 @@ const Login = () => {
             }}
         >
             <Toast ref={toast} />
-            <Card title="Welcome!" footer={footer}
-            style={{
+            <Card title="Bienvenido!" footer={footer} style={{
                 textAlign: 'center',
                 backgroundColor: 'rgba(255, 255, 255, 0.9)',
                 padding: '20px',
@@ -88,7 +87,7 @@ const Login = () => {
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                                 toggleMask
                                 value={password} />
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">Contraseña</label>
                         </span>
                     </div>
                 </div>

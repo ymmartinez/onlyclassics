@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Toolbar } from 'primereact/toolbar';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Badge } from 'primereact/badge';
 import { useNavigate } from 'react-router-dom';
+import { Menu } from 'primereact/menu';
+import { MenuItem } from 'primereact/menuitem';
 
 const Structure = () => {
     const navigate = useNavigate();
@@ -53,13 +55,29 @@ const Structure = () => {
     const handleUser = () => {
         navigate('/user');
 }
+const handlePublic = () => {
+    navigate('/publicarticle');
+}
+const menuRight = useRef<Menu>(null);
+const items: MenuItem[] = [
+    {
+        label: 'Notificaciones',
+        items: [
+            {
+                label: 'comentario 1',
+                icon: 'pi pi-bell'
+            },
+        ]
+    }
+];
     const endContent = (
         <React.Fragment>
             <div>
-            <Button tooltip="Publicar articulo" tooltipOptions={{ position: 'bottom' }} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
+            <Button onClick={handlePublic} tooltip="Publicar articulo" tooltipOptions={{ position: 'bottom' }} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
                 <i className="pi pi-plus-circle text-xl"></i>
             </Button>
-            <Button className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
+            <Menu model={items} popup ref={menuRight} id="popup_menu_right" popupAlignment="right" />
+            <Button onClick={(event) => menuRight.current?.toggle(event)} aria-controls="popup_menu_right" aria-haspopup className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
                 <i className="pi pi-bell p-overlay-badge text-xl" style={{ fontSize: '2rem' }}>
                     <Badge value="2"></Badge>
                 </i>

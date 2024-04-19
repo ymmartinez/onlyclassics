@@ -18,7 +18,7 @@ const EditPassword = () => {
     const header = (
         <>
             <div className='text-left'>
-                <Button onClick={() =>navigate('/user')} icon="pi pi-arrow-left" className="p-button-text " />
+                <Button onClick={() =>navigate('/setting')} icon="pi pi-arrow-left" className="p-button-text " />
             </div>
             <div>
                 <i className="pi pi-lock" style={{ fontSize: '2.5rem' }}></i>
@@ -28,7 +28,7 @@ const EditPassword = () => {
     const footer = (
         <>
         <div className="flex justify-content-end">
-        <Button style={{ backgroundColor: '#7FC7D9'}} label="Guardar cambios" icon="pi pi-check" className="p-button-success border-round-xl" onClick={handleSave} />
+        <Button style={{ backgroundColor: '#176B87'}} label="Guardar cambios" icon="pi pi-check" className="p-button-success border-round-xl" onClick={handleSave} />
         </div>
         </>
     );
