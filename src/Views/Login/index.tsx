@@ -42,7 +42,7 @@ const Login = () => {
                 backgroundImage: "url('background.jpeg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'
             }}>
             <Toast ref={toast} />
-            <Card title="Welcome!" className="p-card-title" style={{
+            <Card title="Bienvenido!" className="p-card-title" style={{
                 textAlign: 'center',
                 backgroundColor: 'rgba(255, 255, 255, 0.9)',
                 padding: '20px',
@@ -56,7 +56,7 @@ const Login = () => {
                         </span>
                         <span className="p-float-label">
                             <InputText id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                            <label htmlFor="username">Username</label>
+                            <label htmlFor="username">Usuario</label>
                         </span>
                     </div>
 
@@ -70,12 +70,12 @@ const Login = () => {
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                                 toggleMask
                                 value={password} />
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">Contraseña</label>
                         </span>
                     </div>
-                    <Button type="button" label="Log in" onClick={handleLogin} style={{backgroundColor:'#176B87'}} className='border-round-xl'/>
+                    <Button type="button" label="Acceder" onClick={handleLogin} style={{backgroundColor:'#176B87'}} className='border-round-xl'/>
                     <p style={{textDecoration: 'underline'}}>Forgot your ID and password</p>
-                    <Button type="button" label="Register" onClick={handleRegister} icon="pi pi-users" style={{backgroundColor:'#64CCC5'}}className='border-round-xl'/>
+                    <Button type="button" label="Registrarme" onClick={handleRegister} icon="pi pi-users" style={{backgroundColor:'#64CCC5'}}className='border-round-xl'/>
                 </div>
             </Card>
         </div>

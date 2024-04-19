@@ -5,7 +5,7 @@ import User from '../Views/User';
 import Home from '../Views/Home';
 import Structure from '../Views/Structure';
 import Activity from '../Views/Activity';
-import Articles from '../Views/Articles';
+import Article from '../Views/Article';
 import Data from '../Views/Data';
 import Search from '../Views/Search'; 
 import EditPassword from "../Views/EditPassword";
@@ -13,6 +13,8 @@ import Setting from "../Views/Setting";
 import EditMail from "../Views/EditMail";
 import Help from "../Views/Help";
 import FrequentQuestions from "../Views/FrequentQuestions";
+import SignOff from "../Views/SignOff"
+import PublicArticle from "../Views/PublicArticle";
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -47,8 +49,8 @@ const AppRoutes = () => {
                     element: <Activity/>
                 },
                 {
-                    path: 'articles',
-                    element: <Articles/>
+                    path: 'article',
+                    element: <Article/>
                 },
                 {
                     path: 'user',
@@ -81,6 +83,14 @@ const AppRoutes = () => {
                 {
                     path: 'frecuentquestions',
                     element: <FrequentQuestions/>
+                },
+                {
+                    path: 'signoff',
+                    element: <SignOff/>
+                },
+                {
+                    path: 'publicarticle',
+                    element: <PublicArticle/>
                 },
             ]
         },
