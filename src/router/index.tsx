@@ -59,7 +59,7 @@ const AppRoutes = () => {
                     element: <Data/>
                 },
                 {
-                    path: 'search',
+                    path: 'search/:text',
                     element: <Search/>
                 },
                 {
