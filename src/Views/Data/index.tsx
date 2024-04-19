@@ -24,7 +24,7 @@ const Data = () => {
             //         setData(response.data);
             //     })
             }
-    
+
         useEffect(() => {
             getData();
         }, []);
@@ -40,8 +40,8 @@ const Data = () => {
         </>
     );
     return (
-        <div className="h-full flex justify-content-center align-content-center align-items-center">
-            <Card header={header} className="p-card-title" style={{
+        <div className="flex justify-content-center align-content-center align-items-center" style={{ minHeight: "calc(100vh - 4rem)"}}>
+            <Card header={header} style={{
                     width:'500px',
                     textAlign: 'center',
                     backgroundColor: 'white',

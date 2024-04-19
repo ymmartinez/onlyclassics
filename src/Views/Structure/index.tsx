@@ -6,9 +6,15 @@ import { Badge } from 'primereact/badge';
 import { useNavigate } from 'react-router-dom';
 import { Menu } from 'primereact/menu';
 import { MenuItem } from 'primereact/menuitem';
+import './style.css';
 
 const Structure = () => {
+    const [search, setSearch] = React.useState('');
     const navigate = useNavigate();
+
+    const handleSearch = () => {
+        navigate('/search/' + search);
+    }
 
     const startContent = (
         <React.Fragment>
@@ -35,21 +41,21 @@ const Structure = () => {
                 <path d="M21.1245 10.1789L24.8545 9.794L22.4862 7.09967H19.7628L21.1245 10.1789Z" fill="var(--primary-color)" />
                 <path d="M12.1762 10.1789L8.4462 9.794L10.8145 7.09967H13.5378L12.1762 10.1789Z" fill="var(--primary-color)" />
             </svg>
-            <span className="p-toolbar-separator hidden md:inline-flex"></span>
-            <span className="p-toolbar-separator hidden md:inline-flex"></span>
-            <span className="p-toolbar-separator hidden md:inline-flex"></span>
-            <span className="p-toolbar-separator hidden md:inline-flex"></span>
-            <span className="p-toolbar-separator hidden md:inline-flex"></span>
-            <span className="p-toolbar-separator hidden md:inline-flex"></span>
-            <span className="p-toolbar-separator hidden md:inline-flex"></span>
         </React.Fragment>
     );
 
     const centerContent = (
-        <span className="p-input-icon-right">
-            <i className="pi pi-search" />
-            <InputText placeholder="Search" className='border-round-xl'></InputText>
-        </span>
+        <React.Fragment>
+            <span className="p-input-icon-right w-7">
+                <i className="pi pi-search cursor-pointer" onClick={handleSearch}></i>
+                <InputText
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Search"
+                    className='border-round-xl w-full'
+                ></InputText>
+            </span>
+        </React.Fragment>
     );
 
     const handleUser = () => {
@@ -72,7 +78,6 @@ const items: MenuItem[] = [
 ];
     const endContent = (
         <React.Fragment>
-            <div>
             <Button onClick={handlePublic} tooltip="Publicar articulo" tooltipOptions={{ position: 'bottom' }} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
                 <i className="pi pi-plus-circle text-xl"></i>
             </Button>
@@ -85,7 +90,6 @@ const items: MenuItem[] = [
             <Button onClick={handleUser} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
                 <i className="pi pi-user text-xl"></i>
             </Button>
-            </div>
         </React.Fragment>
     );
     return (

@@ -19,7 +19,7 @@ const FrequentQuestions = () => {
     );
 
     return (
-        <div className="h-full flex justify-content-center align-content-center align-items-center">
+        <div className="flex justify-content-center align-content-center align-items-center" style={{ minHeight: "calc(100vh - 4rem)"}}>
             <Card header={header}title="Preguntas Frecuentes" style={{
             width:'700px',
             textAlign: 'center',

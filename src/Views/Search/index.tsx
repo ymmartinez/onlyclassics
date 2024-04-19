@@ -27,7 +27,7 @@ interface SortOption {
 }
 
 const Search = () => {
-    const { text } = useParams();
+    const { search } = useParams();
     const [articles, setArticles] = useState<Article[]>([]);
     const [articlesFiltered, setArticlesFiltered] = useState<Article[]>([]);
     const [sortKey, setSortKey] = useState<string>('');
@@ -46,8 +46,7 @@ const Search = () => {
     const [maxPriceFilter, setMaxPriceFilter] = useState<number>(0);
 
     const getArticles = async () => {
-        const file = {} as File;
-        await axios.get('http://localhost:3000/articles')
+        await axios.get(`http://localhost:3000/articles${search ? `/${search}` : ''}`)
             .then((response) => {
                 setArticles(response.data);
                 setArticlesFiltered(response.data);
@@ -66,7 +65,7 @@ const Search = () => {
 
     useEffect(() => {
         getArticles();
-        console.log(text);
+        console.log(search);
     }, []);
 
     const onSortChange = (event: DropdownChangeEvent) => {

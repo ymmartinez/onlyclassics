@@ -42,7 +42,7 @@ let User = () => {
         </>
     );
     return(
-        <div className="flex justify-content-center align-content-center align-items-center h-full">
+        <div className="flex justify-content-center align-content-center align-items-center" style={{ minHeight: "calc(100vh - 4rem)"}}>
             <Card footer={footer} header={header} title="Nombre" className="p-card-title"
                 style={{
                 width:'500px',

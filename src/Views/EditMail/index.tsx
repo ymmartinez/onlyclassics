@@ -31,7 +31,7 @@ const EditMail= () => {
         </>
     );
     return (
-    <div className="h-full flex justify-content-center align-content-center align-items-center">
+    <div className="flex justify-content-center align-content-center align-items-center" style={{ minHeight: "calc(100vh - 4rem)"}}>
         <Card footer={footer} header={header} title='Cambio de Mail'style={{
             width:'500px',
             textAlign: 'center',

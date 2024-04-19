@@ -52,7 +52,7 @@ let Register = () => {
     );
 
     return (
-        <div className="h-full flex justify-content-center align-content-center align-items-center">
+        <div className="flex justify-content-center align-content-center align-items-center" style={{ minHeight: "calc(100vh - 4rem)"}}>
             <Toast ref={toast} />
             <Card footer={footer} header={header} title="Crear cuenta" className="p-card-title" style={{
                 textAlign: 'center',

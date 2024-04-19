@@ -5,17 +5,18 @@ import { Ripple } from 'primereact/ripple';
 import axios from 'axios';
 import './index.css';
 import { Image } from 'primereact/image';
+import { useParams } from 'react-router-dom';
 
+interface Product {
+    id: number;
+    title: string;
+    price: number;
+    image: string;
+    currency: string;
+}
 
 let Home = () => {
-    interface Product {
-        id: number;
-        title: string;
-        price: number;
-        image: string;
-        currency: string;
-    }
-
+    const { search } = useParams();
     const [products, setProducts] = useState<Product[]>([]);
     const responsiveOptions: CarouselResponsiveOption[] = [
         {
@@ -41,9 +42,8 @@ let Home = () => {
     ];
 
     const getArticles = () => {
-        axios.get('http://localhost:3000/articles')
+        axios.get(`http://localhost:3000/articles`)
             .then((response) => {
-                console.log(response.data);
                 setProducts(response.data);
             })
             .catch((error) => {
@@ -70,7 +70,7 @@ let Home = () => {
     };
 
     return (
-        <div className='py-4 min-h-full'>
+        <div className='py-4'>
             <Card className="px-5 border-round-xl h-10rem" style={{
                 backgroundImage: 'url(background.jpeg)',
                 backgroundSize: 'cover',

@@ -31,11 +31,9 @@ const AppRoutes = () => {
             path: '/',
             element: (
                 <>
-                    <div style={{ backgroundColor: '#EEEEEE'}} className='px-4 h-full'>
+                    <div style={{ backgroundColor: '#EEEEEE'}} className='px-4 min-h-full'>
                         <Structure />
-                        <div style={{ height: "calc(100vh - 4rem)"}}>
-                            <Outlet/>
-                        </div>
+                        <Outlet/>
                     </div>
                 </>
             ),
@@ -61,7 +59,7 @@ const AppRoutes = () => {
                     element: <Data/>
                 },
                 {
-                    path: 'search/:text',
+                    path: 'search/:search',
                     element: <Search/>
                 },
                 {
