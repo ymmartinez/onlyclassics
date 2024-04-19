@@ -46,7 +46,7 @@ const Structure = () => {
 
     const centerContent = (
         <React.Fragment>
-            <span className="p-input-icon-right w-7">
+            <span className="p-input-icon-right w-full">
                 <i className="pi pi-search cursor-pointer" onClick={handleSearch}></i>
                 <InputText
                     value={search}
