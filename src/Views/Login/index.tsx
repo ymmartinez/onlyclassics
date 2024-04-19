@@ -26,7 +26,7 @@ const Login = () => {
             password: password
         }).then((response) => { // then para cuando se termina de resolver algo (promesas)
             localStorage.setItem('access_token', response.data.access_token);
-            navigate('/home');
+            navigate('/');
         }).catch((error) => { //catch para cuando falla
             showToast('error', 'No se pudo iniciar sesion', 'Verifique los mensajes en la pantalla');
         });
