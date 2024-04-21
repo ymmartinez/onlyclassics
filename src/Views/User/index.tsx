@@ -1,18 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button'
 import { Avatar } from 'primereact/avatar';
 import { useNavigate } from 'react-router-dom';
+import { Dialog } from 'primereact/dialog';
+import axios from 'axios';
 
-let User = () => {
+type Severity = 'success' | 'info' | 'warn' | 'error';
+
+const User = () => {
+    const [name, setName] = useState<string>('');
     const [image] = useState('boy-front-premium.png');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        getNameUser();
+    }, []);
+
+    const getNameUser = () => {
+        axios.get('http://localhost:3000/auth/profile', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            }
+        })
+            .then((response) => {
+                setName(response.data.first_name);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
     const navigateRoute = (route: string) => {
         navigate(route)
     }
+
     const handleLogout = () => {
-        // Lógica para cerrar sesión (limpiar el token, redirigir a la página de inicio de sesión, etc.)
         navigate('/login');
     };
 
@@ -41,17 +64,18 @@ let User = () => {
             </div>
         </>
     );
+
     return(
         <div className="flex justify-content-center align-content-center align-items-center" style={{ minHeight: "calc(100vh - 4rem)"}}>
-            <Card footer={footer} header={header} title="Nombre" className="p-card-title"
+            <Card footer={footer} header={header} title={name} className="p-card-title"
                 style={{
-                width:'500px',
-                textAlign: 'center',
-                backgroundColor: 'white',
-                padding: '20px',
-                borderRadius: '10px',
-            }}>
-            </Card>
+                    width:'500px',
+                    textAlign: 'center',
+                    backgroundColor: 'white',
+                    padding: '20px',
+                    borderRadius: '10px',
+                }}
+            ></Card>
         </div>
     )
 }

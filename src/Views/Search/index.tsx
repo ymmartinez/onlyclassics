@@ -28,6 +28,7 @@ interface SortOption {
 
 const Search = () => {
     const { search } = useParams();
+    const { category } = useParams();
     const [articles, setArticles] = useState<Article[]>([]);
     const [articlesFiltered, setArticlesFiltered] = useState<Article[]>([]);
     const [sortKey, setSortKey] = useState<string>('');
@@ -37,16 +38,30 @@ const Search = () => {
         { label: 'Precio mayor a menor', value: '!price' },
         { label: 'Precio menor a mayor', value: 'price' }
     ];
-    const [antiques, setAntiques] = useState<boolean>(true);
-    const [classics, setClassics] = useState<boolean>(true);
+    const [antiques, setAntiques] = useState<boolean>(category === '2');
+    const [classics, setClassics] = useState<boolean>(category === '1');
     const [maxPrice, setMaxPrice] = useState<number>(0);
     const [minPrice, setMinPrice] = useState<number>(0);
     const [prices, setPrices] = useState<number | [number, number] | undefined>([minPrice, maxPrice]);
     const [minPriceFilter, setMinPriceFilter] = useState<number>(0);
     const [maxPriceFilter, setMaxPriceFilter] = useState<number>(0);
 
+    useEffect(() => {
+        getArticles();
+    }, [search]);
+
     const getArticles = async () => {
-        await axios.get(`http://localhost:3000/articles${search ? `/${search}` : ''}`)
+        let url = `http://localhost:3000/articles`;
+
+        if (search && search !== '-') {
+            url += `?search=${search}`;
+        }
+
+        if (!(antiques == classics)) {
+            url += `?category=${antiques ? 2 : 1}`;
+        }
+
+        await axios.get(url)
             .then((response) => {
                 setArticles(response.data);
                 setArticlesFiltered(response.data);
@@ -65,7 +80,6 @@ const Search = () => {
 
     useEffect(() => {
         getArticles();
-        console.log(search);
     }, []);
 
     const onSortChange = (event: DropdownChangeEvent) => {

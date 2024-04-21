@@ -5,25 +5,40 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Divider } from 'primereact/divider';
 
 const Data = () => {
     const navigate = useNavigate();
-    const [data, setData] = useState();
+    const [name, setName] = useState<string>('');
+    const [address, setAddress] = useState<string>('');
+    const [country, setCountry] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
+    const [mail, setMail] = useState<string>('');
 
     const activitiesData = [
         { id: 1, activity: 'Nombre completo:'},
         {id: 1, activity: 'Direccion:'},
         { id: 1, activity: 'Pais:'},
         { id: 1, activity: 'Celular:'},
-        ];
+    ];
 
-        const getData = () => {
-            // axios.get('http://localhost:3000/user/id')
-            //     .then((response) => {
-            //         console.log(response.data);
-            //         setData(response.data);
-            //     })
+    const getData = () => {
+        axios.get('http://localhost:3000/auth/profile', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
             }
+        })
+            .then((response) => {
+                setName(response.data.first_name + ' ' + response.data.last_name);
+                setAddress(response.data.address);
+                setCountry(response.data.country);
+                setPhone(response.data.phone);
+                setMail(response.data.email);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
         useEffect(() => {
             getData();
@@ -41,16 +56,26 @@ const Data = () => {
     );
     return (
         <div className="flex justify-content-center align-content-center align-items-center" style={{ minHeight: "calc(100vh - 4rem)"}}>
-            <Card header={header} style={{
-                    width:'500px',
-                    textAlign: 'center',
-                    backgroundColor: 'white',
-                    padding: '20px',
-                    borderRadius: '10px',
-                }}>
-                <DataTable value={activitiesData} className='pt-0 mt-0'>
-                        <Column field="activity" header="Datos Personales" />
-                </DataTable>
+            <Card header={header} title="Datos Personales" className='text-center p-4 bg-white border-round-xl'>
+                <div className='flex justify-content-between align-content-center align-items-center'>
+                    <h3 className='p-0 m-0'>Nombre: </h3><h4 className='p-0 m-0'>{name}</h4>
+                </div>
+                <Divider />
+                <div className='flex justify-content-between align-content-center align-items-center'>
+                    <h3 className='p-0 m-0'>Email: </h3><h4 className='p-0 m-0'>{mail}</h4>
+                </div>
+                <Divider />
+                <div className='flex justify-content-between align-content-center align-items-center'>
+                    <h3 className='p-0 m-0'>Direccion: </h3><h4 className='p-0 m-0'>{address}</h4>
+                </div>
+                <Divider />
+                <div className='flex justify-content-between align-content-center align-items-center'>
+                    <h3 className='p-0 m-0'>Pais: </h3><h4 className='p-0 m-0'>{country}</h4>
+                </div>
+                <Divider />
+                <div className='flex justify-content-between align-content-center align-items-center'>
+                    <h3 className='p-0 m-0'>Celular: </h3><h4 className='p-0 m-0'>{phone}</h4>
+                </div>
             </Card>
         </div>
     )

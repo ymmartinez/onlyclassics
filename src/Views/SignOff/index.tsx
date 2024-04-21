@@ -1,40 +1,33 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
-import { Card } from 'primereact/card';
+import { useNavigate } from 'react-router-dom';
 
 
-const SignOff = () => {
+const SignOff = ({isProtected = false}) => {
     const [visible, setVisible] = useState(false);
 
-    const showDialog = () => {
-        setVisible(true);
-    };
+    const navigate = useNavigate();
 
-    const hideDialog = () => {
-        setVisible(false);
-    };
+    useEffect(() => {
+        setVisible(isProtected && !localStorage.getItem('access_token'));
+    }, [isProtected]);
 
-    const confirmDelete = () => {
-        // Aquí debes implementar la lógica para eliminar la cuenta
-        console.log('Cuenta eliminada');
-        hideDialog();
-    };
+    const footerDialog = (
+        <>
+            <Button label="Iniciar Sesion" icon="pi pi-check" style={{ backgroundColor:'#176B87'}} onClick={() => navigate('/login')} />
+        </>
+    );
 
     return (
-        <div>
-            <Card>
-            <Dialog header="Eliminar Cuenta" visible={visible} style={{ width: '450px' }} onHide={hideDialog}>
-                <div>
-                    <p>¿Estás seguro de que deseas eliminar tu cuenta?</p>
-                    <div className="p-d-flex p-jc-between">
-                        <Button label="Cancelar" className="p-button-secondary" onClick={hideDialog} />
-                        <Button label="Eliminar" icon="pi pi-check" className="p-button-danger" onClick={confirmDelete} />
-                    </div>
-                </div>
-            </Dialog>
-            </Card>
-        </div>
+        <Dialog
+                header="No has iniciado sesion"
+                visible={visible}
+                onHide={() => navigate('/')}
+                footer={footerDialog}
+            >
+            Para acceder a esta seccion debes iniciar sesion
+        </Dialog>
     );
 };
 

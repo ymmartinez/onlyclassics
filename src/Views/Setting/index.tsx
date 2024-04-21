@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
@@ -8,6 +8,10 @@ import { useNavigate } from 'react-router-dom';
 const Setting = () => {
     const navigate = useNavigate();
     const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setVisible(!localStorage.getItem('access_token'));
+    }, []);
 
     const confirmDelete = () => {
         // Aquí iría tu lógica para eliminar la cuenta
@@ -30,13 +34,13 @@ const Setting = () => {
 
     return (
         <div className="flex justify-content-center align-content-center align-items-center" style={{ minHeight: "calc(100vh - 4rem)"}}>
-        <Card header={header} title='Configuracion'style={{
-            width:'500px',
-            textAlign: 'center',
-            backgroundColor: 'white',
-            padding: '20px',
-            borderRadius: '10px',
-        }}>
+            <Card header={header} title='Configuracion'style={{
+                width:'500px',
+                textAlign: 'center',
+                backgroundColor: 'white',
+                padding: '20px',
+                borderRadius: '10px',
+            }}>
                 <div className="p-fluid">
                     <div className="p-field">
                         <Button label="Cambiar contraseña" className="mt-3 border-round-xl" icon="pi pi-lock" onClick={() => navigate('/editpassword')} style={{ backgroundColor: '#176B87'}}/>

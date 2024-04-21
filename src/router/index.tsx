@@ -29,14 +29,7 @@ const AppRoutes = () => {
 
         {
             path: '/',
-            element: (
-                <>
-                    <div style={{ backgroundColor: '#EEEEEE'}} className='px-4 min-h-full'>
-                        <Structure />
-                        <Outlet/>
-                    </div>
-                </>
-            ),
+            element: (<Structure />),
             children: [
                 {
                     path: '',
@@ -59,7 +52,15 @@ const AppRoutes = () => {
                     element: <Data/>
                 },
                 {
+                    path: 'search/:search/:category',
+                    element: <Search/>
+                },
+                {
                     path: 'search/:search',
+                    element: <Search/>
+                },
+                {
+                    path: 'search',
                     element: <Search/>
                 },
                 {

@@ -1,20 +1,35 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Toolbar } from 'primereact/toolbar';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Badge } from 'primereact/badge';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Menu } from 'primereact/menu';
 import { MenuItem } from 'primereact/menuitem';
 import './style.css';
+import SignOff from '../SignOff';
 
 const Structure = () => {
-    const [search, setSearch] = React.useState('');
+    const location = useLocation();
+    const { search } = useParams();
+    const [text, setText] = React.useState('');
     const navigate = useNavigate();
+    const [isProtected, setIsProtected] = React.useState(false);
+
+    useEffect(() => {
+        if (search !== '-') {
+            setText(search || '');
+        }
+    }, [search]);
 
     const handleSearch = () => {
-        navigate('/search/' + search);
+        navigate(`/search/${text}`);
     }
+
+    useEffect(() => {
+        console.log(location.pathname);
+        setIsProtected(!(location.pathname === '/' || location.pathname.startsWith('/search') || location.pathname === '/article'));
+    }, [location]);
 
     const startContent = (
         <React.Fragment>
@@ -49,8 +64,9 @@ const Structure = () => {
             <span className="p-input-icon-right w-full">
                 <i className="pi pi-search cursor-pointer" onClick={handleSearch}></i>
                 <InputText
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
                     placeholder="Search"
                     className='border-round-xl w-full'
                 ></InputText>
@@ -93,7 +109,11 @@ const items: MenuItem[] = [
         </React.Fragment>
     );
     return (
-        <Toolbar start={startContent} center={centerContent} end={endContent} className="border-round-xl py-0 h-4rem" style={{backgroundColor: '#053B50'}}/>
+        <div style={{ backgroundColor: '#EEEEEE'}} className='px-4 min-h-full'>
+            <SignOff isProtected={isProtected}/>
+            <Toolbar start={startContent} center={centerContent} end={endContent} className="border-round-xl py-0 h-4rem" style={{backgroundColor: '#053B50'}}/>
+            <Outlet/>
+        </div>
     );
 }
 

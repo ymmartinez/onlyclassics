@@ -5,7 +5,7 @@ import { Ripple } from 'primereact/ripple';
 import axios from 'axios';
 import './index.css';
 import { Image } from 'primereact/image';
-import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface Product {
     id: number;
@@ -16,7 +16,6 @@ interface Product {
 }
 
 let Home = () => {
-    const { search } = useParams();
     const [products, setProducts] = useState<Product[]>([]);
     const responsiveOptions: CarouselResponsiveOption[] = [
         {
@@ -40,18 +39,19 @@ let Home = () => {
             numScroll: 1
         }
     ];
-
-    const getArticles = () => {
-        axios.get(`http://localhost:3000/articles`)
-            .then((response) => {
-                setProducts(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
+    const navigate = useNavigate();
 
     useEffect(() => {
+        const getArticles = () => {
+            axios.get(`http://localhost:3000/articles`)
+                .then((response) => {
+                    setProducts(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
         getArticles();
     }, []);
 
@@ -84,7 +84,7 @@ let Home = () => {
             <Card title="Categorias" className="p-card-title border-round-xl" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
                 <div className='grid'>
                     <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#64CCC5'}}>
+                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#64CCC5'}} onClick={() => navigate('/search/-/1')}>
                             <h3 className='pl-2 pt-2 m-0'>Autos Clasicos</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
                                 <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
@@ -93,7 +93,7 @@ let Home = () => {
                         </div>
                     </div>
                     <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#64CCC5'}}>
+                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#64CCC5'}} onClick={() => navigate('/search/-/2')}>
                             <h3 className='pl-2 pt-2 m-0'>Antiguedades</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
                                 <Image imageClassName="border-round-xl h-5rem" src='antiques.png'/>
