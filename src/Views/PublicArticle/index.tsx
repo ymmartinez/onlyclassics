@@ -8,7 +8,9 @@ import { ProgressBar } from 'primereact/progressbar';
 import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
 import { Tooltip } from 'primereact/tooltip';
-
+import { useNavigate } from 'react-router-dom';
+import { Toast } from 'primereact/toast';
+import axios from 'axios';
 
 interface DatosVendedor {
     nombre: string;
@@ -75,12 +77,13 @@ const PublicArticle= () => {
         const onTemplateClear = () => {
             setTotalSize(0);
         };
-        
+
         const headerTemplate = (options: FileUploadHeaderTemplateOptions) => {
             const { className, chooseButton, uploadButton, cancelButton } = options;
             const value = totalSize / 10000;
             const formatedValue = fileUploadRef && fileUploadRef.current ? fileUploadRef.current.formatSize(totalSize) : '0 B';
-    
+            
+            
             return (
                 <div className={className} style={{ backgroundColor: 'transparent', display: 'flex', alignItems: 'center' }}>
                     {chooseButton}
@@ -125,6 +128,31 @@ const PublicArticle= () => {
         const uploadOptions = { icon: 'pi pi-fw pi-cloud-upload', iconOnly: true, className: 'custom-upload-btn p-button-success p-button-rounded p-button-outlined' };
         const cancelOptions = { icon: 'pi pi-fw pi-times', iconOnly: true, className: 'custom-cancel-btn p-button-danger p-button-rounded p-button-outlined' };
     
+        const navigate = useNavigate();
+
+        const navigateRoute = (route: string) => {
+            navigate(route)
+        }
+        const toast = useRef<Toast>(null);
+        type Severity = 'success' | 'info' | 'warn' | 'error';
+        const showToast = (severity: Severity, summary: string, detail: string) => {
+            toast.current?.show({ severity: severity, summary: summary, detail: detail });
+        }
+        const handlePublicArticle = () => {
+            //axios.post('http://localhost:3000/auth/PublicArticle', { // axios: hace peticiones html
+            // post recibe dos parametros el primero es la url a la que le hacemos la peticion
+            // y el segundo es un objeto con lo que le queremos enviar
+            //    nombre: '',
+            //    telefono: '',
+                //email: ''
+            //}).then((response) => { // then para cuando se termina de resolver algo (promesas)
+            //    localStorage.setItem('access_token', response.data.access_token);
+            showToast('error', 'No se pudo iniciar sesion', 'Verifique los mensajes en la pantalla');
+                navigate('/');
+            //}).catch((error) => { //catch para cuando falla
+            //});
+        }
+
         return (
             <div className='py-4 grid m-0'>
             <div className='col-4'>
@@ -218,6 +246,10 @@ const PublicArticle= () => {
                     onUpload={onTemplateUpload} onError={onTemplateClear} onClear={onTemplateClear}
                     headerTemplate={headerTemplate} emptyTemplate={emptyTemplate}
                     chooseOptions={chooseOptions} uploadOptions={uploadOptions} cancelOptions={cancelOptions} />
+                <div className="flex justify-content-end ">
+                <Button label="Cancelar"onClick={() => navigateRoute('/')} className='border-round-xl mt-3'style={{ backgroundColor:'#176B87'}}/>
+                <Button label="Publicar"onClick={handlePublicArticle} className='border-round-xl mt-3'style={{ backgroundColor:'#176B87'}}/>
+                </div>
                 </Card>
             </div>
         </div>
