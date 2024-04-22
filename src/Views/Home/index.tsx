@@ -6,6 +6,7 @@ import axios from 'axios';
 import './index.css';
 import { Image } from 'primereact/image';
 import { useNavigate } from 'react-router-dom';
+import Questions from '../../Components/Questions';
 
 interface Product {
     id: number;
@@ -55,14 +56,14 @@ let Home = () => {
         getArticles();
     }, []);
 
-    const header = (
-        <Image alt="Card" imageClassName="border-round-xl" src={`http://localhost:3000/articles/file`}/>
+    const header = ( path: string ) => (
+        <Image alt="Card" imageClassName="border-round-xl" src={`http://localhost:3000/articles/file?path=${path}`} height='200px' />
     );
 
     const productTemplate = (product: Product) => {
         return (
             <div className='p-2'>
-                <Card title={product.title} subTitle={product.currency + ' ' + product.price} header={header}
+                <Card title={product.title} subTitle={product.currency + ' ' + product.price} header={header(product.image)}
                     className="p-card-title border-round-xl p-2">
                 </Card>
             </div>
@@ -103,6 +104,8 @@ let Home = () => {
                     </div>
                 </div>
             </Card>
+
+            {/* <Questions articleId={13}></Questions> */}
         </div>
     )
 }

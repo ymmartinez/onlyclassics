@@ -3,7 +3,6 @@ import { DataView } from 'primereact/dataview';
 import axios from 'axios';
 import { Card } from 'primereact/card';
 import { Dropdown, DropdownChangeEvent } from 'primereact/dropdown';
-import { Checkbox } from 'primereact/checkbox';
 import { Slider, SliderChangeEvent } from "primereact/slider";
 import { Divider } from 'primereact/divider';
 import { InputNumber, InputNumberValueChangeEvent } from 'primereact/inputnumber';
@@ -45,6 +44,17 @@ const Search = () => {
     const [prices, setPrices] = useState<number | [number, number] | undefined>([minPrice, maxPrice]);
     const [minPriceFilter, setMinPriceFilter] = useState<number>(0);
     const [maxPriceFilter, setMaxPriceFilter] = useState<number>(0);
+
+    const categories = [
+        {
+            name: 'Autos clasicos',
+            value: 1
+        },
+        {
+            name: 'Antiguedades',
+            value: 2
+        }
+    ];
 
     useEffect(() => {
         getArticles();
@@ -150,7 +160,7 @@ const Search = () => {
         return (
             <div className="col-12">
                 <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-                    <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={`http://localhost:3000/articles/file`} alt={article.title} />
+                    <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={`http://localhost:3000/articles/file?path=${article.image}`} alt={article.title} height={100} width={200} />
                     <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                         <div className="flex flex-column align-items-center sm:align-items-start gap-3">
                             <div className="text-2xl font-bold text-900">{article.title}</div>
@@ -163,7 +173,7 @@ const Search = () => {
                             <div className="flex align-items-center gap-3">
                                 <span className="flex align-items-center gap-2">
                                     <i className="pi pi-tag"></i>
-                                    <span className="font-semibold">{article.category}</span>
+                                    <span className="font-semibold">{categories.find((category) => category.value === article.category)?.name}</span>
                                 </span>
                             </div>
                         </div>

@@ -7,8 +7,9 @@ import axios from 'axios';
 import { Toast } from 'primereact/toast';
 import { useNavigate } from 'react-router-dom';
 
+type Severity = 'success' | 'info' | 'warn' | 'error';
+
 let Register = () => {
-    type Severity = 'success' | 'info' | 'warn' | 'error';
     const [name, setName] = useState<string>('');
     const [lastName, setApellido] = useState<string>('');
     const [email, setEmail] = useState<string>('');
