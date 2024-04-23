@@ -18,11 +18,6 @@ interface Product {
 }
 
 let Home = () => {
-    const navigate = useNavigate();
-    const handlePublic = () => {
-        navigate('/publicarticle');
-    }
-    const { search } = useParams();
     const [products, setProducts] = useState<Product[]>([]);
     const responsiveOptions: CarouselResponsiveOption[] = [
         {
@@ -46,29 +41,30 @@ let Home = () => {
             numScroll: 1
         }
     ];
-
-    const getArticles = () => {
-        axios.get(`http://localhost:3000/articles`)
-            .then((response) => {
-                setProducts(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
+    const navigate = useNavigate();
 
     useEffect(() => {
+        const getArticles = () => {
+            axios.get(`http://localhost:3000/articles`)
+                .then((response) => {
+                    setProducts(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
         getArticles();
     }, []);
 
-    const header = (
-        <Image alt="Card" imageClassName="border-round-xl" src={`http://localhost:3000/articles/file`}/>
+    const header = ( path: string ) => (
+        <Image alt="Card" imageClassName="border-round-xl" src={`http://localhost:3000/articles/file?path=${path}`} height='200px' />
     );
 
     const productTemplate = (product: Product) => {
         return (
             <div className='p-2'>
-                <Card title={product.title} subTitle={product.currency + ' ' + product.price} header={header}
+                <Card title={product.title} subTitle={product.currency + ' ' + product.price} header={header(product.image)}
                     className="p-card-title border-round-xl p-2">
                 </Card>
             </div>
@@ -86,7 +82,7 @@ let Home = () => {
                 }}> 
             </Card>
             <div className="flex border-round-xl justify-content-end mt-4 full">
-            <Button onClick={handlePublic} className="w-20rem" label="Publicar Articulo" raised />
+            <Button onClick={()=>navigate('/postarticle')} className="w-20rem" label="Publicar Articulo" raised />
             </div>
 
             <Carousel value={products} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} className="custom-carousel pt-4" circular
@@ -95,7 +91,7 @@ let Home = () => {
             <Card title="¿Qué Buscás?" className="p-card-title border-round-xl" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
                 <div className='grid'>
                     <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}}>
+                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#64CCC5'}} onClick={() => navigate('/search/-/1')}>
                             <h3 className='pl-2 pt-2 m-0'>Autos Clasicos</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
                                 <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
@@ -132,7 +128,9 @@ let Home = () => {
                     </div>
                 </div>
             </Card>
-            </div>
+
+            {/* <Questions articleId={13}></Questions> */}
+        </div>
     )
 }
 

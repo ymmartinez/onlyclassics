@@ -13,7 +13,8 @@ import Setting from "../Views/Setting";
 import EditMail from "../Views/EditMail";
 import Help from "../Views/Help";
 import FrequentQuestions from "../Views/FrequentQuestions";
-import PublicArticle from "../Views/PublicArticle";
+import SignOff from "../Views/SignOff"
+import PublicArticle from "../Views/PostArticle";
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -28,14 +29,7 @@ const AppRoutes = () => {
 
         {
             path: '/',
-            element: (
-                <>
-                    <div style={{ backgroundColor: '#EEEEEE'}} className='px-4 min-h-full'>
-                        <Structure />
-                        <Outlet/>
-                    </div>
-                </>
-            ),
+            element: (<Structure />),
             children: [
                 {
                     path: '',
@@ -58,7 +52,15 @@ const AppRoutes = () => {
                     element: <Data/>
                 },
                 {
+                    path: 'search/:search/:category',
+                    element: <Search/>
+                },
+                {
                     path: 'search/:search',
+                    element: <Search/>
+                },
+                {
+                    path: 'search',
                     element: <Search/>
                 },
                 {

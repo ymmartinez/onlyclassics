@@ -53,13 +53,11 @@ const Login = () => {
             }}
         >
             <Toast ref={toast} />
-            <Card title="Bienvenido!" footer={footer} style={{
-                textAlign: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                padding: '20px',
-                borderRadius: '10px',
-                boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)'
-            }}>
+            <Card
+                title="Bienvenido!"
+                footer={footer}
+                className='text-center p-4 bg-white border-round-xl'
+                >
                 <div className="card flex flex-column md:flex-col gap-5">
                     <div className="p-inputgroup flex-1">
                         <span className="p-inputgroup-addon border-round-left-xl bg-white">
@@ -71,6 +69,12 @@ const Login = () => {
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                                 className='border-round-right-xl'
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        e.preventDefault();
+                                        (document.getElementById('password') as HTMLInputElement).focus();
+                                    }
+                                }}
                                 />
                             <label htmlFor="username">Username</label>
                         </span>
@@ -86,7 +90,14 @@ const Login = () => {
                                 inputId="password"
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                                 toggleMask
-                                value={password} />
+                                value={password}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        e.preventDefault();
+                                        handleLogin();
+                                    }
+                                }}
+                                />
                             <label htmlFor="password">Contraseña</label>
                         </span>
                     </div>

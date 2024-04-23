@@ -35,6 +35,7 @@ const Activity = () => {
             </div>
         </>
     );
+
     return (
         <div className="flex justify-content-center align-content-center align-items-center py-4" style={{ minHeight: " calc(100vh - 4rem)"}}>
             <Card header={header} title="Actividad" className="text-center p-4 bg-white border-round-xl">
