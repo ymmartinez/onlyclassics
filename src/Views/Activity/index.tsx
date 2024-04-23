@@ -28,7 +28,7 @@ const Activity = () => {
     const header = (
         <>
             <div className='text-left'>
-                <Button onClick={() =>navigate('/user')} icon="pi pi-arrow-left" className="p-button-text " />
+                <Button onClick={() =>navigate('/setting')} icon="pi pi-arrow-left" className="p-button-text " />
             </div>
             <div>
                 <i className="pi pi-id-card" style={{ fontSize: '2.5rem' }}></i>

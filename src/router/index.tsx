@@ -13,7 +13,6 @@ import Setting from "../Views/Setting";
 import EditMail from "../Views/EditMail";
 import Help from "../Views/Help";
 import FrequentQuestions from "../Views/FrequentQuestions";
-import SignOff from "../Views/SignOff"
 import PublicArticle from "../Views/PublicArticle";
 
 const AppRoutes = () => {
@@ -81,10 +80,6 @@ const AppRoutes = () => {
                 {
                     path: 'frecuentquestions',
                     element: <FrequentQuestions/>
-                },
-                {
-                    path: 'signoff',
-                    element: <SignOff/>
                 },
                 {
                     path: 'publicarticle',

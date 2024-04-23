@@ -246,10 +246,10 @@ const PublicArticle= () => {
                     onUpload={onTemplateUpload} onError={onTemplateClear} onClear={onTemplateClear}
                     headerTemplate={headerTemplate} emptyTemplate={emptyTemplate}
                     chooseOptions={chooseOptions} uploadOptions={uploadOptions} cancelOptions={cancelOptions} />
-                <div className="flex justify-content-end ">
-                <Button label="Cancelar"onClick={() => navigateRoute('/')} className='border-round-xl mt-3'style={{ backgroundColor:'#176B87'}}/>
-                <Button label="Publicar"onClick={handlePublicArticle} className='border-round-xl mt-3'style={{ backgroundColor:'#176B87'}}/>
-                </div>
+                    <div className="flex justify-content-end">
+                        <Button label="Cancelar"onClick={() => navigateRoute('/')} className='border-round-xl pr-2' style={{ backgroundColor:'#176B87'}}/>
+                        <Button label="Publicar"onClick={handlePublicArticle} className='border-round-xl' style={{ backgroundColor:'#176B87'}}/>
+                    </div>
                 </Card>
             </div>
         </div>
