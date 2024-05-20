@@ -1,0 +1,71 @@
+.assistant-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.assistant-button {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.assistant-dialog {
+    width: 360px;
+    margin: 0;
+}
+
+.assistant-messages {
+    max-height: 300px;
+    min-height: 300px; 
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    max-width: 70%;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.assistant-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-top: 1px solid #ccc;
+}
+
+.rounded-input {
+    flex-grow: 1;
+    border-radius: 25px;
+    padding-right: 2.5rem;
+}
+
+.send-button-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: #007bff;
+}

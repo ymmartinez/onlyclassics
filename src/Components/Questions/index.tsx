@@ -73,9 +73,9 @@ const Questions = ( { articleId }: { articleId: number } ) => {
 
             <div className="flex justify-content-end">
                 <Button
-                    label="Pregutar"
+                    label="Preguntar"
                     className="border-round-xl mt-2"
-                    style={{ backgroundColor: '#176B87' }}
+                    style={{ backgroundColor: '#00A9FF' }}
                     onClick={postQuestion}
                 />
             </div>
@@ -84,7 +84,7 @@ const Questions = ( { articleId }: { articleId: number } ) => {
 
 
     return (
-        <Card title="Preguntas" className="border-round-xl mt-4">
+        <Card title="Preguntas al vendedor" className="border-round-xl mt-4">
             {questions.length > 0 ? questionsTemplate : emptyTemplate}
 
             <Fieldset legend="Hace una pregunta">

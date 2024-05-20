@@ -8,6 +8,11 @@ import { Menu } from 'primereact/menu';
 import { MenuItem } from 'primereact/menuitem';
 import './style.css';
 import SignOff from '../SignOff';
+import { Card } from 'primereact/card';
+import { Divider } from 'primereact/divider';
+import { Image } from 'primereact/image';
+import SideBar from '../../Components/SideBar';
+import Assistant from '../../Components/Assistant';
 
 const Structure = () => {
     const location = useLocation();
@@ -61,6 +66,7 @@ const Structure = () => {
 
     const centerContent = (
         <React.Fragment>
+            <div className="search-bar" style={{ position: 'sticky', top: 0, bottom: '100px' }}>
             <span className="p-input-icon-right w-full">
                 <i className="pi pi-search cursor-pointer" onClick={handleSearch}></i>
                 <InputText
@@ -71,6 +77,7 @@ const Structure = () => {
                     className='border-round-xl w-full'
                 ></InputText>
             </span>
+            </div>
         </React.Fragment>
     );
 
@@ -91,21 +98,37 @@ const items: MenuItem[] = [
 ];
     const endContent = (
         <React.Fragment>
-            <Button onClick={(event) => menuRight.current?.toggle(event)} aria-controls="popup_menu_right" aria-haspopup className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
+            { <Button onClick={()=>navigate('/postarticle')} className="border-round-xl m-2" label="Publicar Articulo" raised />
+
+            /*<Button onClick={(event) => menuRight.current?.toggle(event)} aria-controls="popup_menu_right" aria-haspopup className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
                 <i className="pi pi-bell p-overlay-badge text-xl" style={{ fontSize: '2rem' }}>
                     <Badge value="2"></Badge>
                 </i>
             </Button>
             <Button onClick={handleUser} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
                 <i className="pi pi-user text-xl"></i>
-            </Button>
+            </Button> */}
+            <SideBar></SideBar>
         </React.Fragment>
     );
+    
     return (
         <div style={{ backgroundColor: '#EEEEEE'}} className='px-4 min-h-full'>
             <SignOff isProtected={isProtected}/>
-            <Toolbar start={startContent} center={centerContent} end={endContent} className="border-round-xl py-0 h-4rem" style={{backgroundColor: '#053B50'}}/>
+            <Toolbar start={startContent} center={centerContent} end={endContent} className="border-round-xl py-0 h-4rem" style={{backgroundColor: '#0E46A3'}}/>
             <Outlet/>
+            <Assistant></Assistant>
+            <Card className="border-round-xl h-10rem" style={{backgroundColor: '#0E46A3'}}>
+            <div className="divider-container">
+            <div className="logo-container">
+                <Image alt="Logo" className="logo" />
+            </div>
+            <Divider layout="vertical" />
+            <div className="text-container">
+                <p>{text}</p>
+            </div>
+            </div>
+            </Card>
         </div>
     );
 }

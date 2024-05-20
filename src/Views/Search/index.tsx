@@ -188,8 +188,8 @@ const Search = () => {
     };
 
     return (
-        <div className='py-4 grid m-0'>
-            <div className='col-3'>
+        <div className='py-4 grid m-0 p-0'>
+            <div className='col-3 m-0 pl-0'>
                 <Card className="border-round-xl">
                     <div className='grid row-gap-3'>
                         <div className='col-12'>
@@ -221,22 +221,6 @@ const Search = () => {
                             </div>
                         </div>
 
-                        {/* <div className='col-12'>
-                            <div className='text-2xl font-bold'>Ubicacion</div>
-                            <div className='col-12'>
-                                <div className="flex align-items-center">
-                                    <Checkbox inputId="classics" name="categories" value="classics" onChange={() => setClassics(!classics)} checked={categories.includes('Mushroom')} />
-                                    <label htmlFor="classics" className="ml-2">Autos clasicos</label>
-                                </div>
-                            </div>
-                            <div className='col-12'>
-                                <div className="flex align-items-center">
-                                    <Checkbox inputId="antiques" name="categories" value="antiques" onChange={() => setAntiques(!antiques) } checked={categories.includes('Mushroom')} />
-                                    <label htmlFor="antiques" className="ml-2">Antiguedades</label>
-                                </div>
-                            </div>
-                        </div> */}
-
                         <div className='col-12'>
                             <div className='text-2xl font-bold'>Precio</div>
                             <div className='grid'>
@@ -261,7 +245,7 @@ const Search = () => {
                 </Card>
             </div>
 
-            <div className='col-9'>
+            <div className='col-9 m-0 pr-0'>
                 <Card className="border-round-xl">
                     <DataView
                     value={articlesFiltered}

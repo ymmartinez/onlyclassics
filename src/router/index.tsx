@@ -13,8 +13,8 @@ import Setting from "../Views/Setting";
 import EditMail from "../Views/EditMail";
 import Help from "../Views/Help";
 import FrequentQuestions from "../Views/FrequentQuestions";
-import SignOff from "../Views/SignOff"
-import PublicArticle from "../Views/PostArticle";
+import PostArticle from "../Views/PostArticle";
+import BuyProduct from "../Views/BuyProduct";
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -84,8 +84,12 @@ const AppRoutes = () => {
                     element: <FrequentQuestions/>
                 },
                 {
-                    path: 'publicarticle',
-                    element: <PublicArticle/>
+                    path: 'postarticle',
+                    element: <PostArticle/>
+                },
+                {
+                    path: 'buyproduct',
+                    element: <BuyProduct/>
                 },
             ]
         },

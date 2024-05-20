@@ -59,7 +59,7 @@ const User = () => {
             <div className="card flex flex-column md:flex-col gap-3">
                 <Button label="Datos Personales" onClick={() => navigateRoute('/data')} icon="pi pi-id-card" className='border-round-xl'style={{ backgroundColor:'#176B87'}}/>
                 <Button label="Configuracion" onClick={() => navigateRoute('/setting')} icon="pi pi-cog" className='border-round-xl'style={{backgroundColor:'#176B87'}}/>
-                <Button label="Ayuda"   onClick={() => navigateRoute('/help')} icon="pi pi-info-circle" className='border-round-xl'style={{backgroundColor:'#176B87'}}/>
+                <Button label="Ayuda" onClick={() => navigateRoute('/help')} icon="pi pi-info-circle" className='border-round-xl'style={{backgroundColor:'#176B87'}}/>
                 <Button label="Cerrar Sesion"  onClick={handleLogout} icon="pi pi-sign-out" className='border-round-xl' severity="danger"/>
             </div>
         </>

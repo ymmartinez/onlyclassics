@@ -1,0 +1,11 @@
+.carousel-demo .image-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.carousel-demo .carousel-image {
+    width: 100%;
+    height: auto;
+}

@@ -7,3 +7,13 @@
     background-color: #474747;
     border-radius: 0.75rem;
 }
+
+.p-galleria .p-galleria-indicators .p-galleria-indicator.p-highlight button {
+    background-color: #176B87;
+    border-radius: 0.75rem;
+}
+
+.p-galleria .p-galleria-indicators .p-galleria-indicator button {
+    background-color: #474747;
+    border-radius: 0.75rem;
+}

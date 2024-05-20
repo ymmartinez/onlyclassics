@@ -6,9 +6,10 @@ import axios from 'axios';
 import './index.css';
 import { Image } from 'primereact/image';
 import { Button } from 'primereact/button';
-import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { Divider } from 'primereact/divider';   
+import { Galleria } from 'primereact/galleria';
+
+
 interface Product {
     id: number;
     title: string;
@@ -17,8 +18,15 @@ interface Product {
     currency: string;
 }
 
+interface Banner {
+    src: string
+}
+
 let Home = () => {
     const [products, setProducts] = useState<Product[]>([]);
+    const [banners, setBanners] = useState<Banner[]>([]);
+    const navigate = useNavigate();
+
     const responsiveOptions: CarouselResponsiveOption[] = [
         {
             breakpoint: '1400px',
@@ -41,7 +49,13 @@ let Home = () => {
             numScroll: 1
         }
     ];
-    const navigate = useNavigate();
+
+    const getBanners = () => {
+        setBanners([
+            {src: 'background.jpeg'},
+            {src: 'h.gif'}
+        ]);
+    }
 
     useEffect(() => {
         const getArticles = () => {
@@ -55,6 +69,7 @@ let Home = () => {
         }
 
         getArticles();
+        getBanners();
     }, []);
 
     const header = ( path: string ) => (
@@ -71,27 +86,45 @@ let Home = () => {
         );
     };
 
-    
+    const itemTemplate = (banner : Banner) => {
+        return <div style={{ width: '100%', overflow: 'hidden' }}>
+                <Image
+                    src={banner.src}
+                    imageClassName='border-round-xl'
+                    imageStyle={{ width: '100%', height: '200px', objectFit: 'cover'}}
+                />
+            </div>
+    }
 
     return (
         <div className='py-4'>
-            <Card className="px-5 border-round-xl h-10rem"style={{
-                backgroundImage: 'url(background.jpeg)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-                }}> 
-            </Card>
-            <div className="flex border-round-xl justify-content-end mt-4 full">
-            <Button onClick={()=>navigate('/postarticle')} className="w-20rem" label="Publicar Articulo" raised />
-            </div>
+            <Galleria
+                className='border-round-xl'
+                value={banners}
+                responsiveOptions={responsiveOptions}
+                item={itemTemplate}
+                circular
+                autoPlay
+                transitionInterval={2000}
+                showThumbnails={false}
+                showIndicators
+            />
 
-            <Carousel value={products} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} className="custom-carousel pt-4" circular
-            autoplayInterval={3000} itemTemplate={productTemplate}/>
+            <Carousel
+                className="pt-4"
+                value={products}
+                responsiveOptions={responsiveOptions}
+                itemTemplate={productTemplate}
+                circular
+                autoplayInterval={3000}
+                numVisible={3}
+                numScroll={3}
+            />
 
             <Card title="¿Qué Buscás?" className="p-card-title border-round-xl" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
                 <div className='grid'>
-                    <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#64CCC5'}} onClick={() => navigate('/search/-/1')}>
+                    <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
+                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}} onClick={() => navigate('/search/-/1')}>
                             <h3 className='pl-2 pt-2 m-0'>Autos Clasicos</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
                                 <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
@@ -99,25 +132,7 @@ let Home = () => {
                             <Ripple />
                         </div>
                     </div>
-                    <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}}>
-                            <h3 className='pl-2 pt-2 m-0'>Objetos Misticos</h3>
-                            <div className='flex justify-content-end pr-2 pb-2'>
-                                <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
-                            </div>
-                            <Ripple />
-                        </div>
-                        </div>
-                        <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}}>
-                            <h3 className='pl-2 pt-2 m-0'>Otros</h3>
-                            <div className='flex justify-content-end pr-2 pb-2'>
-                                <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
-                            </div>
-                            <Ripple />
-                        </div>
-                        </div>
-                    <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
+                    <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
                         <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}}>
                             <h3 className='pl-2 pt-2 m-0'>Antiguedades</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
@@ -126,10 +141,26 @@ let Home = () => {
                             <Ripple />
                         </div>
                     </div>
-                </div>
+                    <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
+                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}}>
+                            <h3 className='pl-2 pt-2 m-0'>Objetos Misticos</h3>
+                            <div className='flex justify-content-end pr-2 pb-2'>
+                                <Image imageClassName="border-round-xl h-5rem" src='objectmistic.png'/>
+                            </div>
+                            <Ripple />
+                        </div>
+                        </div>
+                    <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
+                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}}>
+                            <h3 className='pl-2 pt-2 m-0'>Otros</h3>
+                            <div className='flex justify-content-end pr-2 pb-2'>
+                                <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
+                            </div>
+                            <Ripple />
+                        </div>
+                    </div>
+                    </div>
             </Card>
-
-            {/* <Questions articleId={13}></Questions> */}
         </div>
     )
 }
