@@ -12,7 +12,7 @@ const Help = () => {
     const header = (
         <>
             <div className='text-left'>
-                <Button onClick={() => navigate('/user')} icon="pi pi-arrow-left" className="p-button-text " />
+                <Button onClick={() => navigate('/')} icon="pi pi-arrow-left" className="p-button-text " />
             </div>
             <div>
                 <i className="pi pi-info-circle" style={{ fontSize: '2.5rem' }}></i>

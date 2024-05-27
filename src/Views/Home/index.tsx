@@ -52,8 +52,8 @@ let Home = () => {
 
     const getBanners = () => {
         setBanners([
-            {src: 'background.jpeg'},
-            {src: 'h.gif'}
+            {src: 'prop.png'},
+            {src: 'modoo.png'}
         ]);
     }
 
@@ -105,7 +105,7 @@ let Home = () => {
                 item={itemTemplate}
                 circular
                 autoPlay
-                transitionInterval={2000}
+                transitionInterval={3000}
                 showThumbnails={false}
                 showIndicators
             />
@@ -124,7 +124,7 @@ let Home = () => {
             <Card title="¿Qué Buscás?" className="p-card-title border-round-xl" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
                 <div className='grid'>
                     <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}} onClick={() => navigate('/search/-/1')}>
+                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}} onClick={() => navigate('/search/-/1')}>
                             <h3 className='pl-2 pt-2 m-0'>Autos Clasicos</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
                                 <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
@@ -133,7 +133,7 @@ let Home = () => {
                         </div>
                     </div>
                     <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}}>
+                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}}>
                             <h3 className='pl-2 pt-2 m-0'>Antiguedades</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
                                 <Image imageClassName="border-round-xl h-5rem" src='antiques.png'/>
@@ -142,7 +142,7 @@ let Home = () => {
                         </div>
                     </div>
                     <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}}>
+                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}}>
                             <h3 className='pl-2 pt-2 m-0'>Objetos Misticos</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
                                 <Image imageClassName="border-round-xl h-5rem" src='objectmistic.png'/>
@@ -151,7 +151,7 @@ let Home = () => {
                         </div>
                         </div>
                     <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#DFF6FF'}}>
+                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}}>
                             <h3 className='pl-2 pt-2 m-0'>Otros</h3>
                             <div className='flex justify-content-end pr-2 pb-2'>
                                 <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>

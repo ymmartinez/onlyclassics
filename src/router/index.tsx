@@ -15,6 +15,9 @@ import Help from "../Views/Help";
 import FrequentQuestions from "../Views/FrequentQuestions";
 import PostArticle from "../Views/PostArticle";
 import BuyProduct from "../Views/BuyProduct";
+import Save from '../Views/Save';
+import Notifications from '../Views/Notifications';
+
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -90,6 +93,14 @@ const AppRoutes = () => {
                 {
                     path: 'buyproduct',
                     element: <BuyProduct/>
+                },
+                {
+                    path: 'save',
+                    element: <Save/>
+                },
+                {
+                    path: 'notifications',
+                    element: <Notifications/>
                 },
             ]
         },

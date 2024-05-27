@@ -91,7 +91,7 @@ const Advertisingg = () => {
         <div className="grid">
             <div className="col-3">
                 <Card className='border-round-xl'>
-                    <div>
+                    <div className='propaganda'>
                         <Image src="path/to/your/advertisement-image.jpg" />
                         <div>
                             <h4>¡No te pierdas nuestros productos especiales!</h4>

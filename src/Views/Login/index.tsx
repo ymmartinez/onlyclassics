@@ -19,7 +19,8 @@ const Login = () => {
     }
 
     const handleLogin = () => {
-        axios.post('http://localhost:3000/auth/login', { // axios: hace peticiones html
+        axios.post('http://localhost:3000/auth/login', { 
+        // axios: hace peticiones html
         // post recibe dos parametros el primero es la url a la que le hacemos la peticion
         // y el segundo es un objeto con lo que le queremos enviar
             email: username,

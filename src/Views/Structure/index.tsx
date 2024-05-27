@@ -98,16 +98,7 @@ const items: MenuItem[] = [
 ];
     const endContent = (
         <React.Fragment>
-            { <Button onClick={()=>navigate('/postarticle')} className="border-round-xl m-2" label="Publicar Articulo" raised />
-
-            /*<Button onClick={(event) => menuRight.current?.toggle(event)} aria-controls="popup_menu_right" aria-haspopup className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
-                <i className="pi pi-bell p-overlay-badge text-xl" style={{ fontSize: '2rem' }}>
-                    <Badge value="2"></Badge>
-                </i>
-            </Button>
-            <Button onClick={handleUser} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem hover:bg-white-alpha-10 transition-all transition-duration-200">
-                <i className="pi pi-user text-xl"></i>
-            </Button> */}
+            <Button onClick={()=>navigate('/postarticle')} className=" border-round-xl m-2" style={{backgroundColor: ''}} label="Publicar Articulo" />
             <SideBar></SideBar>
         </React.Fragment>
     );
