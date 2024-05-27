@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { Image } from 'primereact/image';
-import { Carousel, CarouselResponsiveOption } from 'primereact/carousel';
-import { Galleria } from 'primereact/galleria';
 import axios from 'axios';
+import CarouselArticle from '../CarouselArticle';
 
-interface Product {
+interface Article {
     id: number;
     title: string;
     price: number;
@@ -19,109 +18,44 @@ interface Banner {
 }
 
 const Advertisingg = () => {
-    const responsiveOptions: CarouselResponsiveOption[] = [
-        {
-            breakpoint: '1400px',
-            numVisible: 3,
-            numScroll: 1
-        },
-        {
-            breakpoint: '1199px',
-            numVisible: 3,
-            numScroll: 1
-        },
-        {
-            breakpoint: '767px',
-            numVisible: 2,
-            numScroll: 1
-        },
-        {
-            breakpoint: '575px',
-            numVisible: 1,
-            numScroll: 1
-        }
-    ];
-
     const [banners, setBanners] = useState<Banner[]>([]);
-    const [products, setProducts] = useState<Product[]>([]);
-    const productTemplate = (product: Product) => {
-        return (
-            <Card
-                className="border-round-xl max-w-15rem min-h-20rem"
-                title={<span className="single-line-title">{product.title}</span>}
-                subTitle={product.currency + ' ' + product.price}
-                header={header(product.image)}>
-            </Card>
-        );
-    };
+    const [articles, setArticles] = useState<Article[]>([]);
 
-    const itemTemplate = (banner : Banner) => {
-        return <div style={{ width: '100%', overflow: 'hidden' }}>
-                <Image
-                    src={banner.src}
-                    imageClassName='border-round-xl'
-                    imageStyle={{ width: '100%', height: '200px', objectFit: 'cover'}}
-                />
-            </div>
+    const getArticles = () => {
+        axios.get(`http://localhost:3000/articles`)
+        .then((response) => {
+            setArticles(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
-    const header = ( path: string ) => (
-        <Image
-            alt="Card"
-            imageClassName="border-round-xl"
-            src={`http://localhost:3000/articles/file?path=${path}`}
-            height='150rem'
-            />
-    );
-    useEffect(() => {
-        const getArticles = () => {
-            axios.get(`http://localhost:3000/articles`)
-                .then((response) => {
-                    setProducts(response.data);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        }
 
+    useEffect(() => {
         getArticles();
     }, []);
 
-
     return (
         <div className="grid">
-            <div className="col-3">
+            <div className="col-12 mb-2">
                 <Card className='border-round-xl'>
-                    <div>
-                        <Image src="path/to/your/advertisement-image.jpg" />
-                        <div>
-                            <h4>¡No te pierdas nuestros productos especiales!</h4>
-                            <p>Descubre articulos exclusivos.</p>
+                    <div className="grid">
+                        <div className="col-9">
+                            <Image src="path/to/your/advertisement-image.jpg" />
+                        </div>
+
+                        <div className="col-3">
+                            <h2>¡Descubre nuestras ofertas!</h2>
+                            <p>Descubre los mejores productos a precios increibles.</p>
                             <Button label="Ver más" icon="pi pi-arrow-right" className="p-button-text" />
                         </div>
                     </div>
                 </Card>
             </div>
-            <div className="col-9">
-                <Galleria
-                    className='pt-4'
-                    value={banners}
-                    responsiveOptions={responsiveOptions}
-                    item={itemTemplate}
-                    circular
-                    autoPlay
-                    transitionInterval={2000}
-                    showThumbnails={false}
-                    showIndicators
-                />
 
-                <Carousel
-                    value={products}
-                    responsiveOptions={responsiveOptions}
-                    itemTemplate={productTemplate}
-                    circular
-                    autoplayInterval={3000}
-                    numVisible={3}
-                />
+            <div className="col-12">
+                <Card title="Articulos destacados" className="border-round-xl mb-4"></Card>
+                <CarouselArticle articles={articles} />
             </div>
         </div>
     );

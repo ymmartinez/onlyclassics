@@ -40,7 +40,7 @@ const AppRoutes = () => {
                     element: <Activity/>
                 },
                 {
-                    path: 'article',
+                    path: 'article/:id',
                     element: <Article/>
                 },
                 {

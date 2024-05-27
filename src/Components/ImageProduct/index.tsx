@@ -1,20 +1,11 @@
 import React from 'react';
 import { Carousel } from 'primereact/carousel';
 import './index.css';
+import { Image } from 'primereact/image';
 
-interface ImageItem {
-    id: string;
-    src: string;
-    alt: string;
-}
+const ImageProduct = ({images}: {images: string[]}) => {
+    const icon = (<i className="pi pi-search"></i>);
 
-const images: ImageItem[] = [
-    { id: '1', src: 'image1.jpeg', alt: 'Image 1' },
-    { id: '2', src: 'images.jpeg', alt: 'Image 2' },
-    { id: '3', src: 'image4.jpg', alt: 'Image 3' },
-];
-
-const Image = () => {
     const responsiveOptions = [
         {
             breakpoint: '1024px',
@@ -33,10 +24,10 @@ const Image = () => {
         }
     ];
 
-    const imageTemplate = (image: ImageItem) => {
+    const imageTemplate = (src: string) => {
         return (
             <div className="image-item">
-                <img src={image.src} alt={image.alt} className="carousel-image" />
+                <Image src={`http://localhost:3000/articles/file?path=${src}`} indicatorIcon={icon} alt="Image" preview width="250" />
             </div>
         );
     };
@@ -44,16 +35,16 @@ const Image = () => {
     return (
         <div className="carousel-demo">
             <Carousel
-                value={images} 
-                numVisible={1} 
-                numScroll={1} 
-                responsiveOptions={responsiveOptions} 
-                itemTemplate={imageTemplate} 
-                circular 
+                value={images}
+                numVisible={1}
+                numScroll={1}
+                responsiveOptions={responsiveOptions}
+                itemTemplate={imageTemplate}
+                circular
                 autoplayInterval={0}
             />
         </div>
     );
 };
 
-export default Image;
+export default ImageProduct;

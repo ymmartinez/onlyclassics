@@ -111,7 +111,7 @@ const items: MenuItem[] = [
             <SideBar></SideBar>
         </React.Fragment>
     );
-    
+
     return (
         <div style={{ backgroundColor: '#EEEEEE'}} className='px-4 min-h-full'>
             <SignOff isProtected={isProtected}/>

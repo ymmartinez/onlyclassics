@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import CarouselArticle from "../../Components/CarouselArticle";
 import { Carousel, CarouselResponsiveOption } from 'primereact/carousel';
 import { Card } from 'primereact/card';
 import { Ripple } from 'primereact/ripple';
 import axios from 'axios';
 import './index.css';
 import { Image } from 'primereact/image';
-import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { Galleria } from 'primereact/galleria';
 
-
-interface Product {
+interface Article {
     id: number;
     title: string;
     price: number;
-    image: string;
     currency: string;
+    image: string;
 }
 
 interface Banner {
@@ -23,7 +22,7 @@ interface Banner {
 }
 
 let Home = () => {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [articles, setArticles] = useState<Article[]>([]);
     const [banners, setBanners] = useState<Banner[]>([]);
     const navigate = useNavigate();
 
@@ -61,7 +60,7 @@ let Home = () => {
         const getArticles = () => {
             axios.get(`http://localhost:3000/articles`)
                 .then((response) => {
-                    setProducts(response.data);
+                    setArticles(response.data);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -71,20 +70,6 @@ let Home = () => {
         getArticles();
         getBanners();
     }, []);
-
-    const header = ( path: string ) => (
-        <Image alt="Card" imageClassName="border-round-xl" src={`http://localhost:3000/articles/file?path=${path}`} height='200px' />
-    );
-
-    const productTemplate = (product: Product) => {
-        return (
-            <div className='p-2'>
-                <Card title={product.title} subTitle={product.currency + ' ' + product.price} header={header(product.image)}
-                    className="p-card-title border-round-xl p-2">
-                </Card>
-            </div>
-        );
-    };
 
     const itemTemplate = (banner : Banner) => {
         return <div style={{ width: '100%', overflow: 'hidden' }}>
@@ -110,16 +95,7 @@ let Home = () => {
                 showIndicators
             />
 
-            <Carousel
-                className="pt-4"
-                value={products}
-                responsiveOptions={responsiveOptions}
-                itemTemplate={productTemplate}
-                circular
-                autoplayInterval={3000}
-                numVisible={3}
-                numScroll={3}
-            />
+            <CarouselArticle articles={articles} />
 
             <Card title="¿Qué Buscás?" className="p-card-title border-round-xl" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
                 <div className='grid'>

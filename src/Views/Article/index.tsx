@@ -1,15 +1,16 @@
+import React, { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { Divider } from 'primereact/divider';
-import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Questions from '../../Components/Questions';
-import { Sidebar } from 'primereact/sidebar';
-import Image from '../../Components/Image';
+import ImageProduct from '../../Components/ImageProduct';
 import Advertisingg from '../../Components/Advertisingg';
 import { Dialog } from 'primereact/dialog';
+import axios from 'axios';
 
 interface Article {
+    id: number;
     title: string;
     description: string;
     price: number;
@@ -18,44 +19,44 @@ interface Article {
     year: number;
     location: string;
     currency: string;
+    images: string[];
 }
 
 const Article = () => {
-    const[article,setArticle]= useState<Article>({
-        title : "Titulo de prueba",
-        description : "hola",
-        price : 300,
-        model: "honda",
-        brand: "hola",
-        year: 1890,
-        location:"uruguay",
-        currency: 'USD'
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const [article, setArticle] = useState<Article>({
+        id: 0,
+        title : "",
+        description : "",
+        price : 0,
+        model: "",
+        brand: "",
+        year: 0,
+        location: "",
+        currency: "",
+        images: []
     });
 
-    const navigate = useNavigate();
-    const [showImagesDialog, setShowImagesDialog] = useState<boolean>(false);
+    const getArticle = async () => {
+        await axios.get(`http://localhost:3000/articles/${id}`)
+            .then((response) => {
+                setArticle(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
-    const showImages = () => {
-        setShowImagesDialog(true);
-    };
-
-    const onHideImagesDialog = () => {
-        setShowImagesDialog(false);
-    };
+    useEffect(() => {
+        getArticle();
+    }, []);
 
     return(
         <div className="grid py-4">
             <div className='col-6'>
                 <Card className="border-round-xl" title='Fotos del producto'>
-                    <Image/>
-                    <div className="">
-                        <Button label="Ver Imágenes expandidas" icon="pi pi-image" onClick={showImages} className="p-button-text p-button-plain" />
-                    </div>
-                    <Dialog header="Fotos del producto" visible={showImagesDialog} onHide={onHideImagesDialog}>
-                        <div className="">
-                            <Image />
-                        </div>
-                    </Dialog>
+                    <ImageProduct images={article.images} />
                 </Card>
             </div>
             <div className='col-6'>
@@ -96,12 +97,12 @@ const Article = () => {
                 </div>
             </div>
             <div className='col-12'>
-                <Questions articleId={10}></Questions>
+                <Questions articleId={article.id}></Questions>
             </div>
             <div className='col-12'>
                 <Advertisingg></Advertisingg>
             </div>
-``        </div>
+        </div>
     )
 }
 

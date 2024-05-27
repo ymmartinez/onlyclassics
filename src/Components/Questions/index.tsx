@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Card } from 'primereact/card';
 import { Fieldset } from 'primereact/fieldset';
-import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { InputTextarea } from 'primereact/inputtextarea';
 import axios from 'axios';
@@ -13,6 +12,7 @@ interface Questions {
 const Questions = ( { articleId }: { articleId: number } ) => {
     const [newQuestion, setNewQuestion] = React.useState<string>('');
     const [questions, setQuestions] = React.useState<Questions[]>([]);
+    const [loading, setLoading] = React.useState<boolean>(false);
 
     useEffect(() => {
         getQuestions();
@@ -34,8 +34,10 @@ const Questions = ( { articleId }: { articleId: number } ) => {
     }
 
     const postQuestion = async () => {
-        axios.post(`http://localhost:3000/questions/${articleId}`, {
-            question: newQuestion
+        setLoading(true);
+        axios.post(`http://localhost:3000/questions`, {
+            question: newQuestion,
+            article_id: articleId
         }, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token')
@@ -46,12 +48,13 @@ const Questions = ( { articleId }: { articleId: number } ) => {
         }).catch((error) => {
             console.log(error);
         });
+        setLoading(false);
     }
 
     const questionsTemplate = questions.map((question, index) => {
         return (
             <Fieldset key={index} legend={question.question} toggleable className='mb-3'>
-                <p className="m-0">{question.answer}</p>
+                <p className="m-0">{question.answer?.length ? question.answer : 'Todavia no hay respuesta'}</p>
             </Fieldset>
         );
     });
@@ -73,6 +76,7 @@ const Questions = ( { articleId }: { articleId: number } ) => {
 
             <div className="flex justify-content-end">
                 <Button
+                    loading={loading}
                     label="Preguntar"
                     className="border-round-xl mt-2"
                     style={{ backgroundColor: '#00A9FF' }}
