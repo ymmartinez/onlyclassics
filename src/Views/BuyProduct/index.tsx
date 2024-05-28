@@ -147,57 +147,57 @@ interface Tarjeta {
                 </div>
             )}
             {activeIndex === 2 && (
-                <PaymentModo></PaymentModo>
-        //     <div className="formgrid grid mt-6">
-        //     <div className="field m-0 col-12 md:col-4">
-        //         <span className="p-float-label">
-        //             <InputText className='border-round-xl ' value={numeroTarjeta} onChange={handleNumeroTarjetaChange} />
-        //             <label htmlFor="currency">Numero de tarjeta</label>
-        //         </span>
-        //         <div className={classNames({ 'p-error': CardType === 'Desconocido' })}>
-        //             {CardType}
-        //             </div>
-        //     </div>
-        //     <div className="field m-0 col-12 md:col-4">
-        //         <span className="p-float-label">
-        //         <InputText className='border-round-xl' />
-        //             <label htmlFor="currency">CVV</label>
-        //         </span>
-        //         <div>
-        // <span className="cvv-link" onClick={showDialog}>¿Dónde encontrar el CVV?</span>
-        //     <Dialog header="¿Dónde encontrar el CVV?" visible={visible} style={{ width: '50vw' }} onHide={hideDialog}>
-        //     <div>
-        //     <p>
-        //         El CVV (Card Verification Value) es un código de seguridad de tres o cuatro dígitos que se encuentra en tu tarjeta de crédito o débito.
-        //         <br />
-        //         Para la mayoría de las tarjetas Visa, Mastercard y Discover, el CVV se encuentra en la parte posterior de la tarjeta, en el área de firma.
-        //         <br />
-        //         Para las tarjetas American Express, el CVV se encuentra en la parte delantera de la tarjeta, justo por encima del número de la tarjeta.
-        //     </p>
-        //     </div>
-        //     <div className="p-d-flex p-jc-end">
-        //     </div>
-        //     </Dialog>
-        // </div>
-        //     </div>
-        //     <div className="field m-0 col-12 md:col-4">
-        //         <span className="p-float-label">
-        //         <InputText className='border-round-xl' />
-        //             <label htmlFor="currency">Nombre del titular</label>
-        //         </span>
-        //     </div>
+                // <PaymentModo></PaymentModo>
+            <div className="formgrid grid mt-6">
+            <div className="field m-0 col-12 md:col-4">
+                <span className="p-float-label">
+                    <InputText className='border-round-xl ' value={numeroTarjeta} onChange={handleNumeroTarjetaChange} />
+                    <label htmlFor="currency">Numero de tarjeta</label>
+                </span>
+                <div className={classNames({ 'p-error': CardType === 'Desconocido' })}>
+                    {CardType}
+                    </div>
+            </div>
+            <div className="field m-0 col-12 md:col-4">
+                <span className="p-float-label">
+                <InputText className='border-round-xl' />
+                    <label htmlFor="currency">CVV</label>
+                </span>
+                <div>
+        <span className="cvv-link" onClick={showDialog}>¿Dónde encontrar el CVV?</span>
+            <Dialog header="¿Dónde encontrar el CVV?" visible={visible} style={{ width: '50vw' }} onHide={hideDialog}>
+            <div>
+            <p>
+                El CVV (Card Verification Value) es un código de seguridad de tres o cuatro dígitos que se encuentra en tu tarjeta de crédito o débito.
+                <br />
+                Para la mayoría de las tarjetas Visa, Mastercard y Discover, el CVV se encuentra en la parte posterior de la tarjeta, en el área de firma.
+                <br />
+                Para las tarjetas American Express, el CVV se encuentra en la parte delantera de la tarjeta, justo por encima del número de la tarjeta.
+            </p>
+            </div>
+            <div className="p-d-flex p-jc-end">
+            </div>
+            </Dialog>
+        </div>
+            </div>
+            <div className="field m-0 col-12 md:col-4">
+                <span className="p-float-label">
+                <InputText className='border-round-xl' />
+                    <label htmlFor="currency">Nombre del titular</label>
+                </span>
+            </div>
 
-        //     <div className="field m-0 col-12 md:col-4 mt-5">
-        //         <span className="p-float-label">
-        //         <InputText className='border-round-xl' />
-        //             <label htmlFor="currency">Fecha de vencimiento</label>
-        //         </span>
-        //         <div className='flex justify-between mt-4 border-round-xl'>
-        //             <Button className='border-round-xl mt-4 mr-2' label="Anterior" icon="pi pi-chevron-left" onClick={handlePrev} />
-        //             <Button className='border-round-xl mt-4' label="Siguiente" icon="pi pi-chevron-right" onClick={handleNext} />
-        //         </div>
-        //     </div>
-        // </div>
+            <div className="field m-0 col-12 md:col-4 mt-5">
+                <span className="p-float-label">
+                <InputText className='border-round-xl' />
+                    <label htmlFor="currency">Fecha de vencimiento</label>
+                </span>
+                <div className='flex justify-between mt-4 border-round-xl'>
+                    <Button className='border-round-xl mt-4 mr-2' label="Anterior" icon="pi pi-chevron-left" onClick={handlePrev} />
+                    <Button className='border-round-xl mt-4' label="Siguiente" icon="pi pi-chevron-right" onClick={handleNext} />
+                </div>
+            </div>
+        </div>
             )}
             </Card>
         </div>
