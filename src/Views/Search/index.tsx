@@ -8,7 +8,7 @@ import { Divider } from 'primereact/divider';
 import { InputNumber, InputNumberValueChangeEvent } from 'primereact/inputnumber';
 import { InputSwitch, InputSwitchChangeEvent } from 'primereact/inputswitch';
 import { Nullable } from 'primereact/ts-helpers';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface Article {
     id: number;
@@ -26,6 +26,7 @@ interface SortOption {
 }
 
 const Search = () => {
+    const navigate = useNavigate();
     const { search } = useParams();
     const { category } = useParams();
     const [articles, setArticles] = useState<Article[]>([]);
@@ -159,7 +160,7 @@ const Search = () => {
     const itemTemplate = (article: Article) => {
         return (
             <div className="col-12">
-                <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
+                <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4 cursor-pointer" onClick={() => navigate(`/article/${article.id}`)}>
                     <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={`http://localhost:3000/articles/file?path=${article.image}`} alt={article.title} height={100} width={200} />
                     <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                         <div className="flex flex-column align-items-center sm:align-items-start gap-3">

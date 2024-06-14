@@ -65,6 +65,8 @@ const Questions = ( { articleId }: { articleId: number } ) => {
         </div>
     );
 
+    const isLogged = localStorage.getItem('access_token') ? true : false;
+
     const newQuestionTemplate = (
         <div className="">
             <InputTextarea
@@ -81,6 +83,9 @@ const Questions = ( { articleId }: { articleId: number } ) => {
                     className="border-round-xl mt-2"
                     style={{ backgroundColor: '#00A9FF' }}
                     onClick={postQuestion}
+                    disabled={!isLogged}
+                    tooltipOptions={{ showOnDisabled: true, position: 'top'}}
+                    tooltip={!isLogged ? 'Debes iniciar sesion para hacer una pregunta' : ''}
                 />
             </div>
         </div>

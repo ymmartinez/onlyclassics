@@ -23,7 +23,7 @@ const PaymentModo = () => {
 
     const createPaymentIntention = async () => {
         const res = await fetch(
-            'https://backend-de-la-tienda.com/api/modo-checkout',
+            'http://localhost:3000/payments',
             {
                 method: 'POST',
                 headers: {

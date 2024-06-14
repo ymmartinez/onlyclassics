@@ -81,6 +81,8 @@ const PostArticle= () => {
             }
         ).then((response) => {
             showToast('success', 'Publicado', 'El articulo se publico correctamente');
+            console.log(response);
+            navigateRoute(`/article/${response.data.id}`);
         })
         .catch((error) => {
             console.log(error);

@@ -6,8 +6,7 @@ import axios from 'axios';
 import CarouselArticle from '../CarouselArticle';
 import { Divider } from 'primereact/divider';
 
-
-const Advertisingg = () => {
+const Footer = () => {
     return (
         <Card className="border-round-xl" style={{backgroundColor: '#0E46A3'}}>
             <div className="divider-container">
@@ -23,4 +22,4 @@ const Advertisingg = () => {
     );
 };
 
-export default Advertisingg;
+export default Footer;

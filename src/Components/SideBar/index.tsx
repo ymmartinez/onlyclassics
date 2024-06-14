@@ -10,12 +10,16 @@ const SideBar = () => {
     const navigate = useNavigate();
 
     const navigateView = (route:string) => {
-        navigate(route); 
+        navigate(route);
         setVisibleRight(false);
     }
 
+    const closeSession = () => {
+        localStorage.removeItem('access_token');
+        navigateView('/');
+    }
+
     const items = [
-        
         {
             label: 'Inicio',
             icon: 'pi pi-fw pi-briefcase',
@@ -25,7 +29,7 @@ const SideBar = () => {
                     icon: 'pi pi-user',
                     command: () => {
                         navigateView('/data')
-                    } 
+                    }
                 },
                 {
                     label: 'Notificaciones',
@@ -46,7 +50,7 @@ const SideBar = () => {
                     command: () => {
                         navigateView('/help')
                     }
-                } 
+                }
             ]
         },
 
@@ -64,7 +68,7 @@ const SideBar = () => {
             label: 'Cerrar sesion',
             icon: 'pi pi-sign-out',
             command: () => {
-            navigateView('/login')
+                closeSession()
             }
         }
     ]

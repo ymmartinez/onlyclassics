@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import './style.css';
-import SignOff from '../SignOff';
+import SignOff from '../../Components/SignOff';
 import Assistant from '../../Components/Assistant';
 import Footer from '../../Components/Footer';
 import Bar from '../../Components/Bar';
@@ -11,7 +11,11 @@ const Structure = () => {
     const [isProtected, setIsProtected] = React.useState(false);
 
     useEffect(() => {
-        setIsProtected(!(location.pathname === '/' || location.pathname.startsWith('/search') || location.pathname === '/article'));
+        setIsProtected(!(
+            location.pathname === '/' ||
+            location.pathname.startsWith('/search') ||
+            location.pathname.startsWith('/article')
+        ));
     }, [location]);
 
     return (

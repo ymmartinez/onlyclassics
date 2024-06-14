@@ -27,7 +27,7 @@ const ImageProduct = ({images}: {images: string[]}) => {
     const imageTemplate = (src: string) => {
         return (
             <div className="image-item">
-                <Image src={`http://localhost:3000/articles/file?path=${src}`} indicatorIcon={icon} alt="Image" preview width="250" />
+                <Image src={`http://localhost:3000/articles/file?path=${src}`} indicatorIcon={icon} alt="Image" preview width="520" />
             </div>
         );
     };
