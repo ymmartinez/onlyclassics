@@ -37,7 +37,7 @@ const Help = () => {
             }}>
                 <div className="p-fluid">
                     <div className="p-field">
-                        <Button label="Contactar al Soporte" onClick={() => setVisible(!visible)} icon="pi pi-envelope" className='mt-3 border-round-xl' style={{ backgroundColor: '#176B87' }} />
+                        <Button label="Contactar al Soporte" onClick={() => setVisible(!visible)} icon="pi pi-envelope" className='mt-3 border-round-xl' style={{ backgroundColor: '#279EFF' }} />
                         <Dialog style={{
                             width:'500px',
                             textAlign: 'center',
@@ -57,7 +57,10 @@ const Help = () => {
                         </Dialog>
                     </div>
                     <div className="p-field">
-                        <Button label="Preguntas Frecuentes (FAQ)" onClick={() => navigate('/frecuentquestions')} icon="pi pi-question-circle" className='mt-3 border-round-xl' style={{ backgroundColor: '#176B87' }} />
+                        <Button label="Preguntas Frecuentes (FAQ)" onClick={() => navigate('/frecuentquestions')} icon="pi pi-question-circle" className='mt-3 border-round-xl' style={{ backgroundColor: '#279EFF' }} />
+                    </div>
+                    <div className="p-field">
+                        <Button label="Terminos y Condiciones" onClick={() => navigate('/terms')} icon="pi pi-file" className='mt-3 border-round-xl' style={{ backgroundColor: '#279EFF' }} />
                     </div>
                 </div>
             </Card>

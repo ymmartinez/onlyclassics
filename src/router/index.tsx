@@ -17,7 +17,7 @@ import PostArticle from "../Views/PostArticle";
 import BuyProduct from "../Views/BuyProduct";
 import Save from '../Views/Save';
 import Notifications from '../Views/Notifications';
-
+import Terms from '../Views/Terms';
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -26,14 +26,13 @@ const AppRoutes = () => {
             element: <Login/>
         },
         {
-            path: '/register',
-            element: <Register/>
-        },
-
-        {
             path: '/',
             element: (<Structure />),
             children: [
+                {
+                    path: '/register',
+                    element: <Register/>
+                },
                 {
                     path: '',
                     element: <Home/>
@@ -101,6 +100,10 @@ const AppRoutes = () => {
                 {
                     path: 'notifications',
                     element: <Notifications/>
+                },
+                {
+                    path: 'terms',
+                    element: <Terms/>
                 },
             ]
         },

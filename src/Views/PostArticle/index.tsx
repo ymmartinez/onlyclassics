@@ -95,7 +95,6 @@ const PostArticle= () => {
         </div>
     );
 
-    // FILE
     const onTemplateSelect = (e: FileUploadSelectEvent) => {
         let _totalSize = totalSize;
         let files = e.files;
@@ -245,7 +244,6 @@ const PostArticle= () => {
                                             placeholder='Precio'
                                             id="price"
                                             inputClassName='border-round-xl w-full'
-                                            // min={1800}
                                             value={article.price}
                                             onValueChange={(e) => setArticle({...article, price: e.value})}
                                         />

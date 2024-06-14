@@ -1,8 +1,5 @@
 .buyer-messages {
   padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .messages-container {
@@ -17,29 +14,21 @@
   transition: transform 0.3s ease;
 }
 
-.message-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.response-dialog .dialog-content {
-  padding: 1rem;
-}
-
 .response-textarea {
   width: 100%;
   margin-top: 1rem;
 }
-
-.p-dialog .p-dialog-header {
-  background-color: #007ad9;
-  color: white;
+.header {
+  display: flex;
+  align-items: center; 
+}
+.answered {
+  opacity: 0.7; 
 }
 
-.p-dialog .p-dialog-content {
-  padding: 2rem;
+.delete-button {
+  float: right;
 }
 
-.p-dialog .p-dialog-footer {
-  padding: 1rem;
-}
+
+

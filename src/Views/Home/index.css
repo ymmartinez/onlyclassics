@@ -17,3 +17,7 @@
     background-color: #474747;
     border-radius: 0.75rem;
 }
+
+.banner-wrapper {
+    margin-bottom: 20px; /* Ajusta el valor según sea necesario */
+}

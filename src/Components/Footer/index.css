@@ -1,0 +1,53 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #0E46A3; /* Ajusta este color según tu diseño */
+    color: white;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en varias filas en pantallas más pequeñas */
+}
+
+.footer-section {
+    flex: 1;
+    padding: 0 10px;
+    min-width: 150px; /* Asegura un ancho mínimo para cada sección */
+}
+
+.footer-divider {
+    border-left: 1px solid white;
+    height: auto; /* Ajusta la altura automáticamente según el contenido */
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    white-space: nowrap; /* Evita que el texto de copyright se divida en varias líneas */
+}
+
+/* Estilos adicionales para mejorar el diseño en pantallas pequeñas */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-divider {
+        border-left: none;
+        border-top: 1px solid white;
+        width: 100%;
+        height: 1px;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+}

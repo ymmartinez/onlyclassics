@@ -31,7 +31,7 @@ const SideBar = () => {
                     label: 'Notificaciones',
                     icon: 'pi pi-bell',
                     command: () => {
-                        navigateView('/')
+                        navigateView('/notifications')
                     }
                 },
                 { label: 'Guardados',

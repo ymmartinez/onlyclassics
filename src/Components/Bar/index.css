@@ -1,8 +1,8 @@
 .toolBar {
-    position: -webkit-sticky; /* Para navegadores basados en Webkit */
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 1000; /* Asegúrate de que la barra de herramientas esté por encima de otros contenidos */
-    background-color: #0E46A3; /* Color de fondo para que sea visible cuando sea sticky */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para un efecto visual agradable */
+    z-index: 1000; 
+    background-color: #0E46A3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
