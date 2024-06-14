@@ -15,34 +15,27 @@ const Data = () => {
     const [phone, setPhone] = useState<string>('');
     const [mail, setMail] = useState<string>('');
 
-    const activitiesData = [
-        { id: 1, activity: 'Nombre completo:'},
-        {id: 1, activity: 'Direccion:'},
-        { id: 1, activity: 'Pais:'},
-        { id: 1, activity: 'Celular:'},
-    ];
-
     const getData = () => {
         axios.get('http://localhost:3000/auth/profile', {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('access_token')}`
             }
         })
-            .then((response) => {
-                setName(response.data.first_name + ' ' + response.data.last_name);
-                setAddress(response.data.address);
-                setCountry(response.data.country);
-                setPhone(response.data.phone);
-                setMail(response.data.email);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        .then((response) => {
+            setName(response.data.first_name + ' ' + response.data.last_name);
+            setAddress(response.data.address);
+            setCountry(response.data.country);
+            setPhone(response.data.phone);
+            setMail(response.data.email);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 
-        useEffect(() => {
-            getData();
-        }, []);
+    useEffect(() => {
+        getData();
+    }, []);
 
     const header = (
         <>
@@ -54,27 +47,28 @@ const Data = () => {
             </div>
         </>
     );
+
     return (
         <div className="flex justify-content-center align-content-center align-items-center" style={{ minHeight: "calc(100vh - 4rem)"}}>
             <Card header={header} title="Datos Personales" className='text-center p-4 bg-white border-round-xl'>
                 <div className='flex justify-content-between align-content-center align-items-center'>
-                    <h3 className='p-0 m-0'>Nombre: </h3><h4 className='p-0 m-0'>{name}</h4>
+                    <h3 className='p-0 m-0'>Nombre: </h3><h4 className='p-0 m-0 pl-4'>{name}</h4>
                 </div>
                 <Divider />
                 <div className='flex justify-content-between align-content-center align-items-center'>
-                    <h3 className='p-0 m-0'>Email: </h3><h4 className='p-0 m-0'>{mail}</h4>
+                    <h3 className='p-0 m-0'>Email: </h3><h4 className='p-0 m-0 pl-4'>{mail}</h4>
                 </div>
                 <Divider />
                 <div className='flex justify-content-between align-content-center align-items-center'>
-                    <h3 className='p-0 m-0'>Direccion: </h3><h4 className='p-0 m-0'>{address}</h4>
+                    <h3 className='p-0 m-0'>Direccion: </h3><h4 className='p-0 m-0 pl-4'>{address}</h4>
                 </div>
                 <Divider />
                 <div className='flex justify-content-between align-content-center align-items-center'>
-                    <h3 className='p-0 m-0'>Pais: </h3><h4 className='p-0 m-0'>{country}</h4>
+                    <h3 className='p-0 m-0'>Pais: </h3><h4 className='p-0 m-0 pl-4'>{country}</h4>
                 </div>
                 <Divider />
                 <div className='flex justify-content-between align-content-center align-items-center'>
-                    <h3 className='p-0 m-0'>Celular: </h3><h4 className='p-0 m-0'>{phone}</h4>
+                    <h3 className='p-0 m-0'>Celular: </h3><h4 className='p-0 m-0 pl-4'>{phone}</h4>
                 </div>
             </Card>
         </div>

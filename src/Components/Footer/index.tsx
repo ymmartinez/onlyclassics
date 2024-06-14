@@ -1,24 +1,52 @@
-import React, { useState, useEffect } from 'react';
 import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
-import { Image } from 'primereact/image';
-import axios from 'axios';
-import CarouselArticle from '../CarouselArticle';
+import './index.css';
+import { useNavigate } from 'react-router-dom';
 import { Divider } from 'primereact/divider';
 
 const Footer = () => {
+    const navigate = useNavigate();
+
     return (
-        <Card className="border-round-xl" style={{backgroundColor: '#0E46A3'}}>
-            <div className="divider-container">
-                <div className="logo-container">
-                    <Image alt="Logo" className="logo" />
+        <Card className="border-round-xl mt-4" style={{ backgroundColor: '#0E46A3' }}>
+        <footer className="footer">
+            <div className="footer-content">
+                <div>
+                    <img src="banner.png" 
+                    width="200" 
+                    height="80" 
+                    alt="Logo" 
+                    />
                 </div>
                 <Divider layout="vertical" />
-                <div className="text-container">
-                    <p></p>
+                <div className='align-content-center'>
+                    <div onClick={() => navigate('/terms')} style={{ cursor: 'pointer', textAlign: 'left' }}>
+                        <b>Términos y Condiciones</b>
+                    </div>
+                    <div onClick={() => navigate('/help')} style={{ cursor: 'pointer', textAlign: 'left' }}>
+                        <b>Ayuda</b>
+                    </div>
+                </div>
+                <Divider layout="vertical" />
+                <div className='align-content-center'>
+                    <div onClick={() => navigate('/terms')} style={{ cursor: 'pointer', textAlign: 'left' }}>
+                        <b>Contacto</b>
+                    </div>
+                    <div onClick={() => navigate('/frecuentquestions')} style={{ cursor: 'pointer', textAlign: 'left' }}>
+                        <b>Preguntas frecuentes</b>
+                    </div>
+                </div>
+                <Divider layout="vertical"/>
+                <div className='align-content-center'>
+                    <div onClick={() => navigate('/terms')} style={{ cursor: 'pointer', textAlign: 'left' }}>
+                        <b>Redes sociales</b>
+                    </div>
                 </div>
             </div>
-        </Card>
+            <div className="footer-copyright">
+                &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+            </div>
+        </footer>
+    </Card>
     );
 };
 

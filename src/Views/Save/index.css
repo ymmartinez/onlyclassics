@@ -44,3 +44,7 @@
 .ui-dialog-buttonpane {
     text-align: center;
 }
+.header {
+    display: flex;
+    align-items: center; 
+}

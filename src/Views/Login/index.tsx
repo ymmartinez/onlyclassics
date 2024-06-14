@@ -35,12 +35,19 @@ const Login = () => {
     const handleRegister = () => {
         navigate('/register');
     }
+    const header = (
+        <>
+            <div className='text-left'>
+                <Button onClick={() =>navigate('/')} icon="pi pi-arrow-left" className="p-button-text " />
+            </div>
+        </>
+    );
 
     const footer = (
         <>
             <div className='flex justify-content-between'>
-                <Button type="button" label="Registrarse" onClick={handleRegister} icon="pi pi-users" style={{backgroundColor:'#64CCC5'}}className='border-round-xl'/>
-                <Button type="button" label="Entrar" onClick={handleLogin} icon='pi pi-sign-in' style={{backgroundColor:'#176B87'}} className='border-round-xl'/>
+                <Button type="button" label="Registrarse" onClick={handleRegister} icon="pi pi-users" style={{backgroundColor:'#67C6E3'}}className='border-round-xl'/>
+                <Button type="button" label="Entrar" onClick={handleLogin} icon='pi pi-sign-in' style={{backgroundColor:'#279EFF'}} className='border-round-xl'/>
             </div>
             <p style={{textDecoration: 'underline'}}>Forgot your ID and password</p>
         </>
@@ -55,6 +62,7 @@ const Login = () => {
         >
             <Toast ref={toast} />
             <Card
+                header={header}
                 title="Bienvenido!"
                 footer={footer}
                 className='text-center p-4 bg-white border-round-xl'

@@ -43,13 +43,13 @@ const Setting = () => {
             }}>
                 <div className="p-fluid">
                     <div className="p-field">
-                        <Button label="Cambiar contraseña" className="mt-3 border-round-xl" icon="pi pi-lock" onClick={() => navigate('/editpassword')} style={{ backgroundColor: '#176B87'}}/>
+                        <Button label="Cambiar contraseña" className="mt-3 border-round-xl" icon="pi pi-lock" onClick={() => navigate('/editpassword')} style={{ backgroundColor: '#279EFF'}}/>
                     </div>
                     <div className="p-field">
-                        <Button label="Cambiar correo electrónico" className="mt-3 border-round-xl" icon="pi pi-envelope" onClick={() => navigate('/editmail')}style={{ backgroundColor: '#176B87'}}/>
+                        <Button label="Cambiar correo electrónico" className="mt-3 border-round-xl" icon="pi pi-envelope" onClick={() => navigate('/editmail')}style={{ backgroundColor: '#279EFF'}}/>
                     </div>
                     <div className="p-field">
-                        <Button label="Actividad" className="mt-3 border-round-xl" icon="pi pi-bars" onClick={() => navigate('/activity')} style={{ backgroundColor: '#176B87'}}/>
+                        <Button label="Actividad" className="mt-3 border-round-xl" icon="pi pi-bars" onClick={() => navigate('/activity')} style={{ backgroundColor: '#279EFF'}}/>
                     </div>
                     <div className="p-field">
                         <Button label="Eliminar cuenta" className=" mt-3 border-round-xl" icon="pi pi-trash" severity="danger" onClick={() => setVisible(true)} />

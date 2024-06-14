@@ -1,0 +1,40 @@
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    max-width: 800px; 
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.title {
+    text-align: start;
+    margin-bottom: 20px;
+}
+
+.terms-container {
+    text-align: left; 
+}
+
+.card {
+    width: 100%;
+}
+.terminos-condiciones {
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center; 
+}
+
+.back-button {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
