@@ -46,6 +46,20 @@ const SideBar = () => {
                     command: () => {
                         navigateView('/help')
                     }
+                },
+                {
+                    label: 'Publicidad',
+                    icon: 'pi pi-tags',
+                    command: () => {
+                        navigateView('/contactpage')
+                    }
+                },
+                {
+                    label: 'Subscripción planes',
+                    icon: 'pi pi-star',
+                    command: () => {
+                        navigateView('/subscription')
+                    }
                 } 
             ]
         },

@@ -14,6 +14,7 @@ const Data = () => {
     const [country, setCountry] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [mail, setMail] = useState<string>('');
+    const [plan, setPlan] = useState<string>('');
 
     const getData = () => {
         axios.get('http://localhost:3000/auth/profile', {
@@ -27,6 +28,7 @@ const Data = () => {
             setCountry(response.data.country);
             setPhone(response.data.phone);
             setMail(response.data.email);
+            setPlan(response.data.plan);
         })
         .catch((error) => {
             console.log(error);
@@ -69,6 +71,10 @@ const Data = () => {
                 <Divider />
                 <div className='flex justify-content-between align-content-center align-items-center'>
                     <h3 className='p-0 m-0'>Celular: </h3><h4 className='p-0 m-0 pl-4'>{phone}</h4>
+                </div>
+                <Divider />
+                <div className='flex justify-content-between align-content-center align-items-center'>
+                    <h3 className='p-0 m-0'>Plan actual: </h3><h4 className='p-0 m-0 pl-4'>{plan}</h4>
                 </div>
             </Card>
         </div>

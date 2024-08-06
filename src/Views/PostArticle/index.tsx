@@ -13,6 +13,7 @@ import { Toast } from 'primereact/toast';
 import axios from 'axios';
 import { InputNumber } from 'primereact/inputnumber';
 import './styles.css';
+import ErrorPublic from '../../Components/ErrorPublic';
 
 interface Currency{
     label:string
@@ -91,7 +92,7 @@ const PostArticle= () => {
     const footer = (
         <div className="flex justify-content-end gap-3">
             <Button label="Cancelar" severity="danger" onClick={() => navigateRoute('/')} className='border-round-xl mt-3'/>
-            <Button label="Publicar" onClick={handlePostArticle} className='border-round-xl mt-3'style={{ backgroundColor:'#176B87'}}/>
+            <ErrorPublic/>
         </div>
     );
 

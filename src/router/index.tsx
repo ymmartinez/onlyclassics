@@ -18,6 +18,8 @@ import BuyProduct from "../Views/BuyProduct";
 import Save from '../Views/Save';
 import Notifications from '../Views/Notifications';
 import Terms from '../Views/Terms';
+import Subscription from "../Views/Subscription";
+import ContactPage from "../Views/ContactPage";
 
 const AppRoutes = () => {
     let routes = useRoutes([
@@ -104,6 +106,13 @@ const AppRoutes = () => {
                 {
                     path: 'terms',
                     element: <Terms/>
+                },
+                {
+                    path: 'subscription',
+                    element: <Subscription/>
+                },
+                {   path: 'contactPage',
+                    element: <ContactPage/>
                 },
             ]
         },

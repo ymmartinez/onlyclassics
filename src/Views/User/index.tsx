@@ -3,7 +3,6 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button'
 import { Avatar } from 'primereact/avatar';
 import { useNavigate } from 'react-router-dom';
-import { Dialog } from 'primereact/dialog';
 import axios from 'axios';
 
 type Severity = 'success' | 'info' | 'warn' | 'error';

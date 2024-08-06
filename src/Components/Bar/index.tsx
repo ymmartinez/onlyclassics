@@ -24,9 +24,9 @@ const Bar = () => {
     const startContent = (
         <React.Fragment>
             <img 
-                src="banner.png"
+                src="logoo.png"
                 alt="Logo" 
-                width="185" 
+                width="60" 
                 height="60" 
                 onClick={() => navigate('/')}
                 className='cursor-pointer'

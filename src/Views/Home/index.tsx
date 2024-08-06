@@ -52,44 +52,35 @@ let Home = () => {
             </div>
             <CarouselArticle articles={articles} />
 
-            <Card title="¿Qué Buscás?" className="p-card-title border-round-xl" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
-                <div className='grid'>
-                    <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}} onClick={() => navigate('/search/-/1')}>
-                            <h3 className='pl-2 pt-2 m-0'>Autos Clasicos</h3>
-                            <div className='flex justify-content-end pr-2 pb-2'>
-                                <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
+            <Card className="p-card-title border-round-xl" style={{backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
+                    <div className='grid justify-content-end'>
+                        <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
+                            <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}} onClick={() => navigate('/search/-/1')}>
+                                <h3 className='pl-2 pt-2 m-0'>Autos Clasicos</h3>
+                                <div className='flex justify-content-end pr-2 pb-2'>
+                                    <Image imageClassName="border-round-xl h-5rem" src='cars-classics.png'/>
+                                </div>
+                                <Ripple />
                             </div>
-                            <Ripple />
                         </div>
-                    </div>
-                    <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}}>
-                            <h3 className='pl-2 pt-2 m-0'>Antiguedades</h3>
-                            <div className='flex justify-content-end pr-2 pb-2'>
-                                <Image imageClassName="border-round-xl h-5rem" src='antiques.png'/>
+                        <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
+                            <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}}>
+                                <h3 className='pl-2 pt-2 m-0'>Antiguedades</h3>
+                                <div className='flex justify-content-end pr-2 pb-2'>
+                                    <Image imageClassName="border-round-xl h-5rem" src='antiques.png'/>
+                                </div>
+                                <Ripple />
                             </div>
-                            <Ripple />
                         </div>
-                    </div>
-                    <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}}>
-                            <h3 className='pl-2 pt-2 m-0'>Objetos Misticos</h3>
-                            <div className='flex justify-content-end pr-2 pb-2'>
-                                <Image imageClassName="border-round-xl h-5rem" src='objectmistic.png'/>
+                        <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
+                            <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}}>
+                                <h3 className='pl-2 pt-2 m-0'>Otros</h3>
+                                <div className='flex justify-content-end pr-2 pb-2'>
+                                    <Image imageClassName="border-round-xl h-5rem" src='otro.png'/>
+                                </div>
+                                <Ripple />
                             </div>
-                            <Ripple />
                         </div>
-                        </div>
-                    <div className='col-12 sm:col-12 md:col-3 lg:col-3 xl:col-3'>
-                        <div className='text-black p-ripple border-round-xl' style={{backgroundColor: '#67C6E3'}}>
-                            <h3 className='pl-2 pt-2 m-0'>Otros</h3>
-                            <div className='flex justify-content-end pr-2 pb-2'>
-                                <Image imageClassName="border-round-xl h-5rem" src='otro.png'/>
-                            </div>
-                            <Ripple />
-                        </div>
-                    </div>
                     </div>
             </Card>
         </div>

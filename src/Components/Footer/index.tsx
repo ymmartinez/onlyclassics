@@ -38,8 +38,8 @@ const Advertisingg = () => {
                 </div>
                 <Divider layout="vertical"/>
                 <div className='align-content-center'>
-                    <div onClick={() => navigate('/terms')} style={{ cursor: 'pointer', textAlign: 'left' }}>
-                        <b>Redes sociales</b>
+                    <div onClick={() => navigate('/contactpage')} style={{ cursor: 'pointer', textAlign: 'left' }}>
+                        <b>Publicidad</b>
                     </div>
                 </div>
             </div>
